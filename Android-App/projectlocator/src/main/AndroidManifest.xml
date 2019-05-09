@@ -91,7 +91,11 @@
             android:label="House Details" />
         <activity
             android:name=".MapsHouseDirectionActivity"
-            android:label="@string/title_activity_maps_house_direction"></activity>
+            android:label="@string/title_activity_maps_house_direction" />
+        <activity
+            android:name=".HouseOwnerPortalActivity"
+            android:label="@string/title_activity_house_owner_portal"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

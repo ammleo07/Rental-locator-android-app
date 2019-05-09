@@ -124,4 +124,5 @@
     </string>
     <string name="title_activity_map_test">Map</string>
     <string name="title_activity_maps_house_direction">Map</string>
+    <string name="title_activity_house_owner_portal">My Portal</string>
 </resources>

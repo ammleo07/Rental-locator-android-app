@@ -21,4 +21,7 @@ public interface RetrofitServiceHouseOwner {
 
     @GET("client/validate/username")
     Call<String> validateUsername(@Query("username") String username);
+
+    @GET("client/owner/get/profile")
+    Call<HouseOwnerForm> getProfile(@Query("username") String username);
 }

@@ -422,7 +422,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         if(response.body().split(":")[1].equalsIgnoreCase("rentee"))
                             intent= new Intent(LoginActivity.this, RenteePortalActivity.class);
                         else
-                            intent= new Intent(LoginActivity.this, SuccessRegistrationActivity.class);
+                            intent= new Intent(LoginActivity.this, HouseOwnerPortalActivity.class);
 
                         intent.putExtra("username", user.getUsername());
                         startActivity(intent);
