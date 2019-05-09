@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.projectlocator.SuccessRegistrationActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/success_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="Success"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/proceed_log_in"
+        android:layout_width="214dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="324dp"
+        android:onClick="gotoLogIn"
+        android:text="Proceed to Log In Page"
+        app:layout_constraintStart_toStartOf="@+id/success_content"
+        app:layout_constraintTop_toTopOf="@+id/success_content" />
+
+</android.support.constraint.ConstraintLayout>

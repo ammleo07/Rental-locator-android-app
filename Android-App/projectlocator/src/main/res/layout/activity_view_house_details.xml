@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_selector"
+    android:padding="16dp"
+    tools:context="com.example.projectlocator.ViewHouseDetailsActivity">
+
+<TextView
+    android:id="@+id/view_house_details_house_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text"
+    android:layout_marginTop="10dp"
+    android:textSize="18dp"
+    android:textStyle="bold"
+    android:textColor="@color/colorPrimaryDark"/>
+
+<TextView
+    android:id="@+id/view_house_details_house_type"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text"
+    android:textColor="#000"
+    android:layout_below="@+id/view_house_details_house_name"
+    android:layout_alignLeft="@+id/view_house_details_house_name"
+    android:layout_alignStart="@+id/view_house_details_house_name"
+    android:layout_marginTop="20dp" />
+
+<TextView
+    android:id="@+id/view_house_details_house_price"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text"
+    android:textColor="#000"
+    android:layout_alignTop="@+id/view_house_details_house_type"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
+
+<TextView
+    android:id="@+id/view_house_details_house_address"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Address"
+    android:textColor="#000"
+    android:layout_below="@+id/view_house_details_house_type"
+    android:layout_alignLeft="@+id/view_house_details_house_type"
+    android:layout_alignStart="@+id/view_house_details_house_type"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/view_house_details_house_latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_address"
+        android:layout_alignLeft="@+id/view_house_details_house_address"
+        android:layout_alignStart="@+id/view_house_details_house_address"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/view_house_details_house_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_latitude"
+        android:layout_alignLeft="@+id/view_house_details_house_latitude"
+        android:layout_alignStart="@+id/view_house_details_house_latitude"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/view_house_details_house_owner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owner"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_longitude"
+        android:layout_alignLeft="@+id/view_house_details_house_longitude"
+        android:layout_alignStart="@+id/view_house_details_house_longitude"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/view_house_details_house_owner_contact_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Number"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_owner"
+        android:layout_alignLeft="@+id/view_house_details_house_owner"
+        android:layout_alignStart="@+id/view_house_details_house_owner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <Button
+        android:id="@+id/view_house_details_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        android:onClick="makeCall"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_owner_contact_number"
+        android:layout_alignLeft="@+id/view_house_details_house_owner_contact_number"
+        android:layout_alignStart="@+id/view_house_details_house_owner_contact_number"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <Button
+        android:id="@+id/view_house_details_view_Map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Location"
+        android:onClick="viewDirection"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_call"
+        android:layout_alignLeft="@+id/view_house_details_call"
+        android:layout_alignStart="@+id/view_house_details_call"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.example.projectlocator.ViewHouseDetailsActivity">-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+

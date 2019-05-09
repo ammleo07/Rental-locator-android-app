@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.projectlocator.RenteePortalActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <ProgressBar
+        android:id="@+id/rentee_portal_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:visibility="gone" />
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:id="@+id/rentee_profile"
+                android:layout_height="180dp"
+                android:layout_marginTop="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:stretchColumns="2">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="2dp"
+                android:background="#0079D6">
+
+                <TextView
+                    android:text="My Profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textColor="#FFFFFF"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"/>
+
+            </TableRow>
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#0079D6">
+
+                    <TextView
+                        android:text="Fields"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"/>
+
+
+                    <TextView
+                        android:text="Values"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"/>
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="Username"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:id="@+id/portal_rentee_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="Name"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:id="@+id/portal_rentee_fullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="Contact Number"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:id="@+id/portal_rentee_contact_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="Preferred House Type"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:id="@+id/portal_rentee_house_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:text="Preferred Price Ranges:"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:id="@+id/portal_rentee_price_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textAlignment="center"
+                        />
+                </TableRow>
+
+
+            </TableLayout>
+
+            <Button
+                android:onClick="edit"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Edit Details" />
+
+            <Button
+                android:onClick="searchHouse"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Search House" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

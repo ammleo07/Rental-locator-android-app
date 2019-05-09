@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_selector"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/result_house_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/result_house_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:textColor="#000"
+        android:layout_below="@+id/result_house_name"
+        android:layout_alignLeft="@+id/result_house_name"
+        android:layout_alignStart="@+id/result_house_name"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/result_house_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:textColor="#000"
+        android:layout_alignTop="@+id/result_house_type"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/result_house_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:layout_below="@+id/result_house_type"
+        android:layout_alignLeft="@+id/result_house_type"
+        android:layout_alignStart="@+id/result_house_type"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/result_house_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:visibility="gone"
+        android:layout_below="@+id/result_house_type"
+        android:layout_alignLeft="@+id/result_house_type"
+        android:layout_alignStart="@+id/result_house_type"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

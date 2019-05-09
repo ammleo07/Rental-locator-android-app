@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.projectlocator.SearchResultActivity">
+
+    <TableLayout
+        android:id="@+id/result_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_column="0"
+                android:background="#0079D6"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_column="1"
+                android:background="#0079D6"
+                android:text="House Name"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_column="2"
+                android:gravity="center"
+                android:background="#0079D6"
+                android:text="House Type"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_column="3"
+                android:background="#0079D6"
+                android:text="Monthly Fee"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"/>
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>

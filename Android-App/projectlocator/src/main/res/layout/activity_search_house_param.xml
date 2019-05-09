@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.projectlocator.SearchHouseParamActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ProgressBar
+        android:id="@+id/search_param_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:layout_editor_absoluteY="75dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:stretchColumns="2">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#0079D6"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="House Preference"
+                    android:textColor="#FFFFFF" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#0079D6"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Fields"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="Values"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#FFFFFF"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="House Type"
+                    android:textAlignment="center" />
+
+
+                <TextView
+                    android:id="@+id/search_house_param_house_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="center" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#FFFFFF"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Price Range"
+                    android:textAlignment="center" />
+
+
+                <TextView
+                    android:id="@+id/search_house_param_price_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="center" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#0079D6"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="Additional Criteria"
+                    android:textColor="#FFFFFF" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#FFFFFF"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Preferred City"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Choose City"
+                    android:imeActionId="16"
+                    android:layout_column="2"
+                    android:imeActionLabel="Town/City"
+                    android:imeOptions="actionUnspecified" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/brgy_row"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#FFFFFF"
+                android:visibility="gone"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Barangay"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/spinner_bgry"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:imeActionId="16"
+                    android:layout_column="2"
+                    android:imeActionLabel="Town/City"
+                    android:imeOptions="actionUnspecified" />
+            </TableRow>
+
+
+
+        </TableLayout>
+    </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/save_house_details"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:onClick="search"
+                android:background="#0079D6"
+                android:text="Search Now" />
+            <Button
+                android:id="@+id/go_back_house_details"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:background="#0079D6"
+                android:text="Back"
+                android:onClick="back"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-App.iml" filepath="$PROJECT_DIR$/Android-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Git Project\Rental-locator-android-app\Android-App\app\app.iml" filepath="C:\Git Project\Rental-locator-android-app\Android-App\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://C:\Git Project\Rental-locator-android-app\Android-App\demo\demo.iml" filepath="C:\Git Project\Rental-locator-android-app\Android-App\demo\demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projectlocator/projectlocator.iml" filepath="$PROJECT_DIR$/projectlocator/projectlocator.iml" />
+    </modules>
+  </component>
+</project>
