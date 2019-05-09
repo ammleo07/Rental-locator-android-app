@@ -42,14 +42,6 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         portalForm = findViewById(R.id.house_owner_profile);
         progressBar = findViewById(R.id.house_owner_portal_progress);
         getUserProfile(username);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -116,7 +108,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
 
     public void edit(View view)
     {
-        Intent intent = new Intent(HouseOwnerPortalActivity.this, EditRenteeDetailsActivity.class);
+        Intent intent = new Intent(HouseOwnerPortalActivity.this, EditHouseOwnerActivity.class);
         intent.putExtra("User", ownerForm);
         startActivity(intent);
     }
