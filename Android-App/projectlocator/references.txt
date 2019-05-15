@@ -19,3 +19,4 @@ https://mobikul.com/pass-list-customobject-activity-well-fragment-android/
 https://stackoverflow.com/questions/10514097/how-do-i-get-values-from-a-dynamically-created-android-tablerow
 https://inducesmile.com/android/how-to-set-recycleview-item-row-background-color-in-android/
 https://stackoverflow.com/questions/36620499/unable-to-startactivity-from-recycler-view-adapter?rq=1
+https://stackoverflow.com/questions/32311484/fastest-way-to-upload-multiple-image-to-server-in-android

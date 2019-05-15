@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.projectlocator.EditHouseOwnerActivity"
-    tools:showIn="@layout/activity_edit_house_owner">
-
+    tools:context="com.example.projectlocator.EditHouseAddressActivity"
+    tools:showIn="@layout/activity_edit_house_address">
 
 
     <LinearLayout
@@ -15,57 +14,105 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+
+        <EditText
+            android:id="@+id/edit_house_address_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address ID"
+            android:imeActionId="5"
+            android:imeActionLabel="Address ID"
+            android:imeOptions="actionUnspecified"
+            android:inputType="text"
+            android:visibility="gone"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edit_house_owner_user_id"
+                android:id="@+id/edit_house_address_house_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="User Id"
+                android:hint="House Number"
                 android:imeActionId="5"
-                android:imeActionLabel="User Id"
+                android:imeActionLabel="House Number"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
-                android:visibility="gone"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_house_address_street"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Street"
+                android:imeActionId="5"
+                android:imeActionLabel="Street"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_house_address_brgy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Barangay"
+                android:imeActionId="5"
+                android:imeActionLabel="Barangay"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_house_address_town"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City/Town"
                 android:enabled="false"
-                android:singleLine="true" />
-
-        <!--</android.support.design.widget.TextInputLayout>-->
-
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <EditText
-                android:id="@+id/edit_house_owner_owner_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Owner Id"
                 android:imeActionId="5"
-                android:imeActionLabel="Owner Id"
+                android:imeActionLabel="City/Town"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
-                android:visibility="gone"
                 android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_house_address_latitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Latitude"
                 android:enabled="false"
-                android:singleLine="true" />
-
-        <!--</android.support.design.widget.TextInputLayout>-->
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_house_owner_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Username"
                 android:imeActionId="5"
-                android:imeActionLabel="Username"
+                android:imeActionLabel="Latitude"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
@@ -78,100 +125,27 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edit_house_owner_password"
+                android:id="@+id/edit_house_address_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="Longitude"
+                android:enabled="false"
                 android:imeActionId="5"
-                android:imeActionLabel="Username"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_house_owner_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="First Name"
-                android:imeActionId="5"
-                android:imeActionLabel="First Name"
+                android:imeActionLabel="Longitude"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true" />
 
         </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_house_owner_middle_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Middle Name"
-                android:imeActionId="5"
-                android:imeActionLabel="Middle Name"
-                android:imeOptions="actionUnspecified"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_house_owner_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name"
-                android:imeActionId="5"
-                android:imeActionLabel="Last Name"
-                android:imeOptions="actionUnspecified"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_house_owner_contact_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contact Number"
-                android:imeActionId="5"
-                android:imeActionLabel="Contact Number"
-                android:imeOptions="actionUnspecified"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
 
 
         <Button
             android:layout_width="250dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:onClick="editHouse"
-            android:text="Edit House Details" />
+            android:onClick="viewMap"
+            android:text="Plot on Map" />
 
         <Button
             android:layout_width="250dp"
@@ -179,6 +153,7 @@
             android:layout_height="wrap_content"
             android:onClick="saveBtn"
             android:text="Save" />
+
 
         <Button
             android:layout_width="250dp"

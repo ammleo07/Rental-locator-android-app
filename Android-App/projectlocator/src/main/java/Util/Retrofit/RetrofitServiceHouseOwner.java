@@ -24,4 +24,13 @@ public interface RetrofitServiceHouseOwner {
 
     @GET("client/owner/get/profile")
     Call<HouseOwnerForm> getProfile(@Query("username") String username);
+
+    @POST("client/owner/update/profile")
+    Call<HouseOwnerForm> updateProfile(@Body HouseOwnerForm houseOwnerForm);
+
+    @POST("client/owner/update/house/profile")
+    Call<HouseOwnerForm> updateHouse(@Body HouseOwnerForm houseOwnerForm);
+
+    @POST("client/owner/update/house/address")
+    Call<HouseOwnerForm> updateHouseAddress(@Body HouseOwnerForm houseOwnerForm);
 }

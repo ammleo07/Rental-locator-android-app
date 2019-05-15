@@ -14,15 +14,16 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
             <EditText
                 android:id="@+id/edit_rentee_user_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="User Id"
+                android:visibility="gone"
                 android:imeActionId="5"
                 android:imeActionLabel="User Id"
                 android:imeOptions="actionUnspecified"
@@ -31,17 +32,18 @@
                 android:enabled="false"
                 android:singleLine="true" />
 
-        </android.support.design.widget.TextInputLayout>
+        <!--</android.support.design.widget.TextInputLayout>-->
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
             <EditText
                 android:id="@+id/edit_rentee_rentee_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Rentee Id"
+                android:visibility="gone"
                 android:imeActionId="5"
                 android:imeActionLabel="Rentee Id"
                 android:imeOptions="actionUnspecified"
@@ -50,7 +52,7 @@
                 android:enabled="false"
                 android:singleLine="true" />
 
-        </android.support.design.widget.TextInputLayout>
+        <!--</android.support.design.widget.TextInputLayout>-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
