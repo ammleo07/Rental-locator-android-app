@@ -2,6 +2,7 @@ package Model;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 public class House implements Serializable{
 
@@ -11,6 +12,16 @@ public class House implements Serializable{
     String houseType;
     int numberOfSlots;
     double monthlyFee;
+
+    public List<String> getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(List<String> imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    List<String> imagePath;
 
     public String getFullAddress() {
         return fullAddress;

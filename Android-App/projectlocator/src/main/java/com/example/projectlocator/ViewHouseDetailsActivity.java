@@ -7,22 +7,25 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import Model.HouseOwnerForm;
 
 public class ViewHouseDetailsActivity extends AppCompatActivity {
 
     String numbertoContact;
-
+    HouseOwnerForm houseOwnerForm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_house_details);
 
-        HouseOwnerForm houseOwnerForm = (HouseOwnerForm) getIntent().getSerializableExtra("House");
+        houseOwnerForm = (HouseOwnerForm) getIntent().getSerializableExtra("House");
         TextView houseName = (TextView) findViewById(R.id.view_house_details_house_name);
         TextView houseType = (TextView) findViewById(R.id.view_house_details_house_type);
         TextView housePrice = (TextView) findViewById(R.id.view_house_details_house_price);
@@ -44,6 +47,15 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         contactNumber.setText("Owner's Contact Number:"+houseOwnerForm.getHouseOwner().getContactNumber());
         numbertoContact = houseOwnerForm.getHouseOwner().getContactNumber();
         callButton.setText("Call " + houseOwnerForm.getHouseOwner().getContactNumber());
+
+//        FirebaseInstanceId.getInstance().getId().addOnSuccessListener( ViewHouseDetailsActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+//            @Override
+//            public void onSuccess(InstanceIdResult instanceIdResult) {
+//                String newToken = instanceIdResult.getToken();
+//                Log.e("newToken",newToken);
+//
+//            }
+//        });
     }
 
     public void makeCall(View v)
@@ -73,6 +85,24 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         try {
 
             Intent intent = new Intent(ViewHouseDetailsActivity.this,MapsHouseDirectionActivity.class);
+            startActivity(intent);
+
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+
+    public void viewGallery(View v)
+    {
+        try {
+
+            Intent intent = new Intent(ViewHouseDetailsActivity.this,HouseGalleryActivity.class);
+            intent.putExtra("User",houseOwnerForm);
             startActivity(intent);
 
         }

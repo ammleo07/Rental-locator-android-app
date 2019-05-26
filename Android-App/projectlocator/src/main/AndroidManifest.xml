@@ -3,6 +3,8 @@
     package="com.example.projectlocator">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -72,9 +74,9 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-         <meta-data
-         android:name="com.google.android.geo.API_KEY"
-         android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapTestActivity"
@@ -107,7 +109,9 @@
         <activity
             android:name=".EditHouseAddressActivity"
             android:label="@string/title_activity_edit_house_address"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UploadHouseImageActivity" />
+        <activity android:name=".HouseGalleryActivity"></activity>
     </application>
 
 </manifest>

@@ -20,3 +20,11 @@ https://stackoverflow.com/questions/10514097/how-do-i-get-values-from-a-dynamica
 https://inducesmile.com/android/how-to-set-recycleview-item-row-background-color-in-android/
 https://stackoverflow.com/questions/36620499/unable-to-startactivity-from-recycler-view-adapter?rq=1
 https://stackoverflow.com/questions/32311484/fastest-way-to-upload-multiple-image-to-server-in-android
+http://mayanklangalia.blogspot.com/2014/04/how-to-upload-multiple-images-on-php.html
+https://stackoverflow.com/questions/20197487/get-selected-image-from-gallery-into-imageview  
+https://viralpatel.net/blogs/pick-image-from-galary-android-app/
+https://stackoverflow.com/questions/1552812/mapping-a-directory-outside-the-web-app-to-url-in-tomcat
+https://stackoverflow.com/questions/28603191/how-to-add-picasso-library-in-android-studio
+https://hemantvc.blogspot.com/2015/06/android-retrofit-images-tutorial.html
+https://stackoverflow.com/questions/22794514/unable-to-access-images-inside-a-war-file
+https://www.youtube.com/watch?v=sVdpslsB9qQ&list=PLk7v1Z2rk4hjM2NPKqtWQ_ndCuoqUj5Hh&index=2

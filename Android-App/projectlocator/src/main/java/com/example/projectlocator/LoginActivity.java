@@ -31,6 +31,7 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -175,6 +176,40 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    public void forgotPassword(View view){
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(LoginActivity.this);
+        View mView = layoutInflaterAndroid.inflate(R.layout.forgot_password_dialog, null);
+        AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(LoginActivity.this);
+        alertDialogBuilderUserInput.setView(mView);
+
+        final EditText email = (EditText) mView.findViewById(R.id.forgot_password_email);
+        alertDialogBuilderUserInput
+                .setCancelable(false)
+                .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                        User user = new User();
+                        user.setUsername(email.getText().toString());
+
+                        forgotPassword(user);
+                        Toast.makeText(getApplicationContext(), "Sending your request......", Toast.LENGTH_LONG).show();
+
+
+                    }
+                })
+
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                dialogBox.cancel();
+                            }
+                        });
+
+        AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
+        alertDialogAndroid.show();
+    }
+
+
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -449,6 +484,45 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      //           showErrorMessage();
                 showProgress(false);
                 Log.d("RenteePortalActivity", "error loading from API:" + t.getMessage());
+                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return result;
+    }
+
+    public boolean forgotPassword(final User user) {
+        boolean result=false;
+        mService= ApiUtils.getSOService();
+        mService.forgotPassword(user).enqueue(new Callback<String>() {
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                if(response.isSuccessful()) {
+                    showProgress(false);
+                    if(response.body().equalsIgnoreCase("success"))
+                    {
+                        Toast.makeText(getApplicationContext(), "You can now visit your email to reset your password" , Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Your username does not exist", Toast.LENGTH_LONG).show();
+                    }
+
+                    Log.d("RenteePortalActivity", "posts loaded from API");
+                }else {
+                    int statusCode  = response.code();
+                    showProgress(false);
+                    Toast.makeText(getApplicationContext(), "Your username does not exist", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                //           showErrorMessage();
+                showProgress(false);
+                Log.d("forgotpassword", "error loading from API:" + t.getMessage());
                 Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

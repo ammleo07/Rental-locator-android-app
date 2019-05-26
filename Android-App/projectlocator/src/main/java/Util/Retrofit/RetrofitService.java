@@ -39,6 +39,9 @@ public interface RetrofitService {
     @POST("client/validateUser")
     Call<String> validateUser(@Body User user);
 
+    @POST("client/forgot/password")
+    Call<String> forgotPassword(@Body User user);
+
     @GET("client/house/address/cities")
     Call<List<String>> getCities();
 

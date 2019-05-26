@@ -81,6 +81,15 @@
                 android:layout_marginTop="16dp"
                 android:text="Sign In"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorLink="@color/defaultColor"
+                android:onClick="forgotPassword"
+                android:clickable="true"
+                android:text="Forgot Password?" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

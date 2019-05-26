@@ -16,11 +16,16 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 import Model.HouseOwnerForm;
 import Model.RenteeForm;
 import Util.Retrofit.ApiUtils;
 import Util.Retrofit.RetrofitService;
 import Util.Retrofit.RetrofitServiceHouseOwner;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +34,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     View portalForm,progressBar;
+    String fileSelected;
     HouseOwnerForm ownerForm;
 
     @Override
@@ -106,11 +112,18 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
 
     }
 
+
+
     public void edit(View view)
     {
         Intent intent = new Intent(HouseOwnerPortalActivity.this, EditHouseOwnerActivity.class);
         intent.putExtra("User", ownerForm);
         startActivity(intent);
+    }
+
+    public void capture(View view)
+    {
+        Toast.makeText(getApplicationContext(), "Capture..", Toast.LENGTH_LONG).show();
     }
 
 
@@ -153,12 +166,20 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent intent = new Intent(HouseOwnerPortalActivity.this, UploadHouseImageActivity.class);
+            intent.putExtra("User", ownerForm);
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(HouseOwnerPortalActivity.this, HouseGalleryActivity.class);
+            intent.putExtra("User", ownerForm);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
+            Intent intent = new Intent(HouseOwnerPortalActivity.this, EditHouseOwnerActivity.class);
+            intent.putExtra("User", ownerForm);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 
