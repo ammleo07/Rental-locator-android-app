@@ -28,3 +28,11 @@ https://stackoverflow.com/questions/28603191/how-to-add-picasso-library-in-andro
 https://hemantvc.blogspot.com/2015/06/android-retrofit-images-tutorial.html
 https://stackoverflow.com/questions/22794514/unable-to-access-images-inside-a-war-file
 https://www.youtube.com/watch?v=sVdpslsB9qQ&list=PLk7v1Z2rk4hjM2NPKqtWQ_ndCuoqUj5Hh&index=2
+http://developine.com/how-to-send-firebase-push-notifications-from-app-server-tutorial/
+https://www.androidauthority.com/android-push-notifications-with-firebase-cloud-messaging-925075/
+https://console.firebase.google.com/project/android-app-90f1f/notification
+https://android.jlelse.eu/android-push-notification-using-firebase-and-advanced-rest-client-3858daff2f50
+http://devdeeds.com/android-how-to-disable-back-press-in-android/
+https://stackoverflow.com/questions/38479668/firebase-api-is-not-sending-push-notifications-when-using-the-api
+https://medium.com/android-school/test-fcm-notification-with-postman-f91ba08aacc3
+https://stackoverflow.com/questions/38479668/firebase-api-is-not-sending-push-notifications-when-using-the-api

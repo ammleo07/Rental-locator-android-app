@@ -15,6 +15,12 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import Model.HouseOwnerForm;
+import Model.User;
+import Util.Retrofit.ApiUtils;
+import Util.Retrofit.RetrofitService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewHouseDetailsActivity extends AppCompatActivity {
 
@@ -48,14 +54,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         numbertoContact = houseOwnerForm.getHouseOwner().getContactNumber();
         callButton.setText("Call " + houseOwnerForm.getHouseOwner().getContactNumber());
 
-//        FirebaseInstanceId.getInstance().getId().addOnSuccessListener( ViewHouseDetailsActivity.this,  new OnSuccessListener<InstanceIdResult>() {
-//            @Override
-//            public void onSuccess(InstanceIdResult instanceIdResult) {
-//                String newToken = instanceIdResult.getToken();
-//                Log.e("newToken",newToken);
-//
-//            }
-//        });
+
+        //Toast.makeText(getApplicationContext(), "Token:" + FirebaseInstanceId.getInstance().getToken() , Toast.LENGTH_LONG).show();
     }
 
     public void makeCall(View v)
@@ -70,6 +70,44 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
                 return;
             }
             startActivity(callIntent);
+
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+    public void notifyOwner(View v)
+    {
+        try {
+
+            Toast.makeText(getApplicationContext(), "Sending Inquiry...", Toast.LENGTH_LONG).show();
+            RetrofitService mService= ApiUtils.getSOService();
+            mService.sendInquiry(houseOwnerForm.getUser()).enqueue(new Callback<String>() {
+
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                    if(response.isSuccessful() && response.body().equalsIgnoreCase("success"))
+                    {
+                        Toast.makeText(getApplicationContext(), "Inquiry is now sent to owner", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "There is error on sending inquiry", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
 
         }
         catch (Exception ex)

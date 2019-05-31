@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import Model.HouseOwnerForm;
 import Model.RenteeForm;
 import Util.Retrofit.ApiUtils;
@@ -146,6 +148,7 @@ public class PreviewRenteeDetailsActivity extends AppCompatActivity {
         Button save = (Button) findViewById(R.id.save_rentee_details);
         save.setEnabled(false);
         Toast.makeText(getApplicationContext(), "Saving new user..." , Toast.LENGTH_LONG).show();
+        form.getUser().setTokenId(FirebaseInstanceId.getInstance().getToken());
         saveUser(form);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 

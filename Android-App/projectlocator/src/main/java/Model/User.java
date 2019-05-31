@@ -31,6 +31,18 @@ public class User extends RealmObject implements Serializable {
     @Expose
     String userType;
 
+    public String getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
+    }
+
+    @SerializedName("tokenId")
+    @Expose
+    String tokenId;
+
     public String getPassword() {
         return password;
     }

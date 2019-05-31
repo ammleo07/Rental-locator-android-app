@@ -42,6 +42,9 @@ public interface RetrofitService {
     @POST("client/forgot/password")
     Call<String> forgotPassword(@Body User user);
 
+    @POST("client/send/notification")
+    Call<String> sendInquiry(@Body User user);
+
     @GET("client/house/address/cities")
     Call<List<String>> getCities();
 
