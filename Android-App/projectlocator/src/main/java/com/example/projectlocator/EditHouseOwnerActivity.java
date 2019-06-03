@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import Model.House;
 import Model.HouseOwner;
 import Model.HouseOwnerForm;
@@ -87,6 +89,9 @@ public class EditHouseOwnerActivity extends AppCompatActivity {
         user.setLastName(lastName.getText().toString());
         user.setId(Integer.parseInt(userId.getText().toString()));
         user.setUserType("House Owner");
+        user.setIsActive("Y");
+        user.setTokenId(FirebaseInstanceId.getInstance().getToken());
+
 
         HouseOwner owner = new HouseOwner();
         owner.setId(Integer.parseInt(ownerId.getText().toString()));

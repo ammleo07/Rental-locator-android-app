@@ -36,3 +36,5 @@ http://devdeeds.com/android-how-to-disable-back-press-in-android/
 https://stackoverflow.com/questions/38479668/firebase-api-is-not-sending-push-notifications-when-using-the-api
 https://medium.com/android-school/test-fcm-notification-with-postman-f91ba08aacc3
 https://stackoverflow.com/questions/38479668/firebase-api-is-not-sending-push-notifications-when-using-the-api
+https://www.youtube.com/watch?v=j6kQ9gikU-A
+https://stackoverflow.com/questions/37584693/error-in-remotemessage-getnotification-getbody

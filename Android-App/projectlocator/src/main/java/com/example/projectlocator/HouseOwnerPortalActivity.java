@@ -1,6 +1,8 @@
 package com.example.projectlocator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -175,6 +177,8 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
+            Intent intent = new Intent(HouseOwnerPortalActivity.this, ViewTransactionsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(HouseOwnerPortalActivity.this, EditHouseOwnerActivity.class);
@@ -184,6 +188,10 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            sharedpreferences.edit().clear();
+            sharedpreferences.edit().commit();
+            finish();
 
         }
 

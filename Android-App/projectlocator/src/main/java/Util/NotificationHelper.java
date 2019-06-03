@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.projectlocator.R;
 import com.example.projectlocator.ViewNotificationActivity;
 
+import Model.Transaction;
 import Model.User;
 
 /**
@@ -19,7 +20,7 @@ import Model.User;
 
 public class NotificationHelper {
 
-    public void displayNotification(Context context, String title, String content)
+    public void displayNotification(Context context, String title, String content, Transaction transaction)
     {
 
 
@@ -32,6 +33,7 @@ public class NotificationHelper {
 
         Intent notificationIntent = new Intent(context, ViewNotificationActivity.class);
         notificationIntent.putExtra("content", content);
+        notificationIntent.putExtra("transaction", transaction);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);

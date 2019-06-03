@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import Model.Rentee;
 import Model.RenteeForm;
 import Model.User;
@@ -91,6 +93,8 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         user.setLastName(lastName.getText().toString());
         user.setId(Integer.parseInt(userId.getText().toString()));
         user.setUserType("Rentee");
+        user.setIsActive("Y");
+        user.setTokenId(FirebaseInstanceId.getInstance().getToken());
 
         Rentee rentee = new Rentee();
         rentee.setId(Integer.parseInt(renteeId.getText().toString()));

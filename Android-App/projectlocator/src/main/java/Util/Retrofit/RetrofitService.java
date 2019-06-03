@@ -7,6 +7,7 @@ import Model.HouseOwnerForm;
 import Model.Rentee;
 import Model.RenteeForm;
 import Model.SearchCriteria;
+import Model.Transaction;
 import Model.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -42,8 +43,8 @@ public interface RetrofitService {
     @POST("client/forgot/password")
     Call<String> forgotPassword(@Body User user);
 
-    @POST("client/send/notification")
-    Call<String> sendInquiry(@Body User user);
+    @POST("client/send/notification/to/owner")
+    Call<Transaction> sendInquiry(@Body Transaction transaction);
 
     @GET("client/house/address/cities")
     Call<List<String>> getCities();
@@ -56,6 +57,9 @@ public interface RetrofitService {
 
     @GET("client/view/house/details")
     Call<HouseOwnerForm> viewHouseDetails(@Query("id") int id);
+
+    @GET("client/get/transactions")
+    Call<List<Transaction>> getTransactions(@Query("username") String username);
 
     @POST("client/register/user/rentee")
     Call<String> saveUser(@Body RenteeForm rentee);

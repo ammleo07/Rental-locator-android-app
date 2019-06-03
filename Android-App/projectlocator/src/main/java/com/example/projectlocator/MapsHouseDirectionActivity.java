@@ -63,7 +63,7 @@ public class MapsHouseDirectionActivity extends FragmentActivity implements OnMa
         String output = "json";
 
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/"+output+"?"+parameters+"&key=AIzaSyAaymuYlNLtnt-Vr9rmW3YD8RAnM9Mr1pg";
+        String url = "https://maps.googleapis.com/maps/api/directions/"+output+"?"+parameters+"&key=AIzaSyATJwusOoaVlOfJ3fx_amvktdTWNpdxxmE";
 
         return url;
     }
@@ -217,7 +217,7 @@ public class MapsHouseDirectionActivity extends FragmentActivity implements OnMa
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        LatLng source = new LatLng(10.25,5.25);
+        LatLng source = new LatLng(1.11,5.5);
         LatLng destination = new LatLng(10.25,5.25);
 
         if(mMap!=null){

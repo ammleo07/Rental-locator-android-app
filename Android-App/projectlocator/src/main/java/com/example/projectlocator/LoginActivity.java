@@ -10,6 +10,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -47,6 +48,7 @@ import android.widget.Toast;
 
 
 import com.example.projectlocator.Util.Job.TestService;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -461,12 +463,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     if(response.body().split(":")[0].equalsIgnoreCase("success"))
                     {
                         Intent intent;
-                        if(response.body().split(":")[1].equalsIgnoreCase("rentee"))
-                            intent= new Intent(LoginActivity.this, RenteePortalActivity.class);
+                        if(response.body().split(":")[1].equalsIgnoreCase("rentee")) {
+                            intent = new Intent(LoginActivity.this, RenteePortalActivity.class);
+                        }
                         else
                             intent= new Intent(LoginActivity.this, HouseOwnerPortalActivity.class);
 
                         intent.putExtra("username", user.getUsername());
+                        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString("username", user.getUsername());
+                        editor.putString("tokenId", FirebaseInstanceId.getInstance().getToken());
+                        editor.putString("userType", response.body().split(":")[1]);
+                        editor.commit();
+
                         startActivity(intent);
                     }
                     else

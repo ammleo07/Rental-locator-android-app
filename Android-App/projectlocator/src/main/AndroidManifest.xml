@@ -120,11 +120,15 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ViewNotificationActivity" android:parentActivityName=".RenteePortalActivity">
+        <activity
+            android:name=".ViewNotificationActivity"
+            android:parentActivityName=".RenteePortalActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RenteePortalActivity"/>
+                android:value=".RenteePortalActivity" />
         </activity>
+        <activity android:name=".ViewTransactionsActivity"
+            android:label="Transactions"></activity>
     </application>
 
 </manifest>

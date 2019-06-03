@@ -1,7 +1,9 @@
 package com.example.projectlocator;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import Model.HouseOwnerForm;
+import Model.Transaction;
 import Model.User;
 import Util.Retrofit.ApiUtils;
 import Util.Retrofit.RetrofitService;
@@ -84,14 +87,22 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
     {
         try {
 
-            Toast.makeText(getApplicationContext(), "Sending Inquiry...", Toast.LENGTH_LONG).show();
+            SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            String username=sharedpreferences.getString("username",null);
+            Transaction transaction = new Transaction();
+            transaction.setHouseOwner(houseOwnerForm.getHouseOwner().getUsername());
+            transaction.setOwnerTokenId(houseOwnerForm.getUser().getTokenId());
+            transaction.setRentee(username);
+            transaction.setRenteeTokenId(sharedpreferences.getString("tokenId",null));
+
+            Toast.makeText(getApplicationContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
             RetrofitService mService= ApiUtils.getSOService();
-            mService.sendInquiry(houseOwnerForm.getUser()).enqueue(new Callback<String>() {
+            mService.sendInquiry(transaction).enqueue(new Callback<Transaction>() {
 
                 @Override
-                public void onResponse(Call<String> call, Response<String> response) {
+                public void onResponse(Call<Transaction> call, Response<Transaction> response) {
 
-                    if(response.isSuccessful() && response.body().equalsIgnoreCase("success"))
+                    if(response.isSuccessful() && response.body() != null)
                     {
                         Toast.makeText(getApplicationContext(), "Inquiry is now sent to owner", Toast.LENGTH_LONG).show();
                     }
@@ -103,7 +114,7 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                public void onFailure(Call<Transaction> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
