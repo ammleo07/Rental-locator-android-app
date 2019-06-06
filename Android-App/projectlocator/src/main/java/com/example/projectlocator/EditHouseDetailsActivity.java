@@ -70,6 +70,7 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(EditHouseDetailsActivity.this, EditHouseAddressActivity.class);
         intent.putExtra("User", ownerForm);
         startActivity(intent);
+        finish();
     }
 
     public void saveBtn(View view)

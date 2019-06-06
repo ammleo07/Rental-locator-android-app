@@ -117,6 +117,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(EditRenteeDetailsActivity.this, RenteePortalActivity.class);
         intent.putExtra("username", renteeForm.getUser().getUsername());
         startActivity(intent);
+        finish();
     }
 
     public void save(final RenteeForm updatedrenteeForm)

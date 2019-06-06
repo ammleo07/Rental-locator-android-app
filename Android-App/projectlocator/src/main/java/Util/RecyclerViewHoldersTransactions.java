@@ -1,8 +1,11 @@
 package Util;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,11 +25,12 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
 
     public TextView transactionName,transactionOwnerName,transactionRenteeName;
     public TextView transactionStatus,transactionId;
+    public Button transactionacceptButton;
 
 
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
 
-    public RecyclerViewHoldersTransactions(View itemView) {
+    public RecyclerViewHoldersTransactions(final View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         transactionName = itemView.findViewById(R.id.transaction_name);
@@ -34,10 +38,25 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
         transactionRenteeName = itemView.findViewById(R.id.transaction_rentee_name);
         transactionStatus = itemView.findViewById(R.id.transaction_status);
         transactionId = itemView.findViewById(R.id.transaction_id);
+        transactionacceptButton=itemView.findViewById(R.id.accept_btn);
+
+        transactionacceptButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(itemView.getContext(), "Accept Rentee.." , Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
     }
 
     @Override
     public void onClick(final View view) {
+
+        if(view.getId() == R.id.accept_btn)
+        {
+
+        }
 //
 //        RetrofitService mService;
 //        mService= ApiUtils.getSOService();

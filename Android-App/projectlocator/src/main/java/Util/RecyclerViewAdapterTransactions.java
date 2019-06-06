@@ -1,5 +1,6 @@
 package Util;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,13 @@ public class RecyclerViewAdapterTransactions extends RecyclerView.Adapter<Recycl
         holder.transactionRenteeName.setText("Rentee: " + itemList.get(position).getRentee() + "");
         holder.transactionStatus.setText("Status: " + itemList.get(position).getStatus() + "");
         holder.transactionId.setText(itemList.get(position).getId() + "");
+
+        SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee"))
+            holder.transactionacceptButton.setText("Confirm Acceptance");
+        else
+            holder.transactionacceptButton.setText("Accept");
+
         //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").resize(200,250).into(holder.houseImage);
         //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").into(holder.houseImage);
         //Log.i("path","http://192.168.1.11:8080" + itemList.get(position));

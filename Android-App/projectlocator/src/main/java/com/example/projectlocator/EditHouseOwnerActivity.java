@@ -116,6 +116,8 @@ public class EditHouseOwnerActivity extends AppCompatActivity {
         Intent intent = new Intent(EditHouseOwnerActivity.this, EditHouseDetailsActivity.class);
         intent.putExtra("User", ownerForm);
         startActivity(intent);
+        finish();
+
     }
 
     public void back(View view)

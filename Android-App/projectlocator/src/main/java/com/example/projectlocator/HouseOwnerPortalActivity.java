@@ -121,6 +121,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         Intent intent = new Intent(HouseOwnerPortalActivity.this, EditHouseOwnerActivity.class);
         intent.putExtra("User", ownerForm);
         startActivity(intent);
+        finish();
     }
 
     public void capture(View view)
