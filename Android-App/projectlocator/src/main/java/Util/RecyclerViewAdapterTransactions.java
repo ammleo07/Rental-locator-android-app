@@ -36,21 +36,32 @@ public class RecyclerViewAdapterTransactions extends RecyclerView.Adapter<Recycl
     public void onBindViewHolder(RecyclerViewHoldersTransactions holder, int position) {
         holder.transactionName.setText("Transaction to " + itemList.get(position).getHouseOwner() + "");
         holder.transactionOwnerName.setText("Owner:" + itemList.get(position).getHouseOwner() + "");
-        holder.transactionRenteeName.setText("Rentee: " + itemList.get(position).getRentee() + "");
+        holder.transactionRenteeName.setText("Rentee:" + itemList.get(position).getRentee() + "");
         holder.transactionStatus.setText("Status: " + itemList.get(position).getStatus() + "");
         holder.transactionId.setText(itemList.get(position).getId() + "");
+        holder.ownerTokenId.setText(itemList.get(position).getOwnerTokenId());
+        holder.renteeTokenId.setText(itemList.get(position).getRenteeTokenId());
+        holder.transactionRenteeContactNumber.setText(itemList.get(position).getRenteeContactNumber());
 
         SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
-        if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee"))
+        if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee")) {
             holder.transactionacceptButton.setText("Confirm Acceptance");
-        else
+            if((!itemList.get(position).getStatus().equalsIgnoreCase("Accepted")) || (itemList.get(position).getStatus().equalsIgnoreCase("Sold")))
+            {
+                holder.transactionacceptButton.setEnabled(false);
+            }
+        }
+        else {
             holder.transactionacceptButton.setText("Accept");
 
-        //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").resize(200,250).into(holder.houseImage);
-        //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").into(holder.houseImage);
-        //Log.i("path","http://192.168.1.11:8080" + itemList.get(position));
-        //Picasso.with(context).load("http://192.168.1.11:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
-        //Picasso.with(context).load("http://192.168.0.137:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
+            if(itemList.get(position).getStatus().equalsIgnoreCase("Accepted"))
+            {
+                holder.transactionacceptButton.setEnabled(false);
+            }
+        }
+
+        if(itemList.get(position).getStatus().matches("Confirmed|Rejected"))
+            holder.transactionacceptButton.setEnabled(false);
     }
 
     @Override

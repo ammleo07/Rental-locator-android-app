@@ -13,6 +13,16 @@ public class House implements Serializable{
     int numberOfSlots;
     double monthlyFee;
 
+    public String getIsNegotiable() {
+        return isNegotiable;
+    }
+
+    public void setIsNegotiable(String isNegotiable) {
+        this.isNegotiable = isNegotiable;
+    }
+
+    String isNegotiable;
+
     public List<String> getImagePath() {
         return imagePath;
     }

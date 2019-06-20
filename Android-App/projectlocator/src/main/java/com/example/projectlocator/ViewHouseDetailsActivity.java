@@ -94,6 +94,7 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
             transaction.setOwnerTokenId(houseOwnerForm.getUser().getTokenId());
             transaction.setRentee(username);
             transaction.setRenteeTokenId(sharedpreferences.getString("tokenId",null));
+            transaction.setOrigin("rentee");
 
             Toast.makeText(getApplicationContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
             RetrofitService mService= ApiUtils.getSOService();

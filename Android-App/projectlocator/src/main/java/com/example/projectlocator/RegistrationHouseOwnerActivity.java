@@ -25,7 +25,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,8 +68,10 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     Button btnPickImage;
     public EditText houseOwnerUsername, houseOwnerPassword,houseOwnerFirstName,houseOwnerMiddleName,houseOwnerLastName,houseOwnerContactNumber;
-    public EditText houseName,houseType,monthlyFee,noOfSlots;
-    public EditText street,brgy,town,houseNo;
+    public EditText houseName,monthlyFee,noOfSlots;
+    public EditText town,houseNo;
+    public CheckBox isNegotiable;
+    Spinner houseType,street,brgy;
     View formTab1,formTab2,progressBar,appBar;
     ProgressDialog progressDialog;
     public Fragment fragmentTab1, fragmentTab2;
@@ -98,6 +102,8 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
         appBar = findViewById(R.id.appbar);
         progressBar = findViewById(R.id.house_owner_progress_bar);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,12 +116,13 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 houseOwnerLastName = (EditText) findViewById(R.id.register_house_owner_last_name);
                 houseOwnerContactNumber = (EditText) findViewById(R.id.register_house_owner_contact_number);
                 houseName = (EditText) findViewById(R.id.register_house_house_name);
-                houseType = (EditText) findViewById(R.id.register_house_house_type);
+                houseType = (Spinner) findViewById(R.id.houseType_list);
                 monthlyFee = (EditText) findViewById(R.id.register_house_monthly_fee);
+                isNegotiable = (CheckBox) findViewById(R.id.register_house_is_negotiable);
                 noOfSlots = (EditText) findViewById(R.id.register_house_number_of_slots);
                 houseNo = (EditText) findViewById(R.id.register_house_address_number);
-                street = (EditText) findViewById(R.id.register_house_address_street);
-                brgy = (EditText) findViewById(R.id.register_house_address_brgy);
+                street = (Spinner) findViewById(R.id.street_list);
+                brgy = (Spinner) findViewById(R.id.barangay_list);
                 town = (EditText) findViewById(R.id.register_house_address_town);
                 EditText latitude = (EditText) findViewById(R.id.register_house_address_latitude);
                 EditText longitude = (EditText) findViewById(R.id.register_house_address_longitude);
@@ -140,10 +147,11 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 requiredFields.add(houseOwner.getContactNumber());
 
                 House house = new House();
-                house.setHouseType(houseType.getText().toString());
+                house.setHouseType(houseType.getSelectedItem().toString());
                 house.setNumberOfSlots(Integer.parseInt(noOfSlots.getText().toString()));
                 house.setMonthlyFee(Double.parseDouble(monthlyFee.getText().toString()));
                 house.setHouseName(houseName.getText().toString());
+                house.setIsNegotiable(isNegotiable.isChecked() ? "Y": "N");
 
                 requiredFields.add(house.getHouseType());
                 requiredFields.add(house.getHouseName());
@@ -152,8 +160,8 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
 
                 Address address = new Address();
                 address.setHouseNo("");
-                address.setStreet(street.getText().toString());
-                address.setBarangay(brgy.getText().toString());
+                address.setStreet(street.getSelectedItem().toString());
+                address.setBarangay(brgy.getSelectedItem().toString());
                 address.setTown(town.getText().toString());
                 address.setHouseNo(houseNo.getText().toString());
                 address.setLatitude(Double.parseDouble(latitude.getText().toString()));

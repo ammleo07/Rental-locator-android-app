@@ -26,6 +26,7 @@ public class NotificationHelper {
 
         NotificationCompat.Builder builder = new  NotificationCompat.Builder(context,"")
                 .setContentTitle(title)
+                .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_menu_send)
                 .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setLights(Color.RED, 3000, 3000)

@@ -6,8 +6,8 @@ package Util.Retrofit;
 
 public class ApiUtils {
 
-    public static final String BASE_URL = "http://192.168.1.11:8080/";
-    //public static final String BASE_URL = "http://192.168.0.137:8080/";
+    public static final String BASE_URL = "http://192.168.1.14:8080/";
+    //public static final String BASE_URL = "http://192.168.43.245:8080/rental";
 
 
     public static RetrofitService getSOService() {

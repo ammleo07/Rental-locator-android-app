@@ -193,7 +193,7 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
         contactNumber.setText(form.getHouseOwner().getContactNumber());
         houseName.setText(form.getHouse().getHouseName());
         houseType.setText(form.getHouse().getHouseType());
-        monthlyFees.setText(form.getHouse().getMonthlyFee() + "");
+        monthlyFees.setText(form.getHouse().getMonthlyFee() + ":" + (form.getHouse().getIsNegotiable().equalsIgnoreCase("Y") ? "Negotiable" : "Non=t Negotiable"));
         numberOfSlots.setText(form.getHouse().getNumberOfSlots() + "");
 
         houseNo.setText(form.getAddress().getHouseNo());

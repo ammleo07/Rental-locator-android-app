@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:hint="Select Barangay"
         android:textStyle="italic"
         android:fontFamily="sans-serif-medium"
         />

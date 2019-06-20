@@ -8,13 +8,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projectlocator.R;
 import com.example.projectlocator.RegistrationRenteeActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import Model.HouseOwnerForm;
+import Util.PasswordValidator;
 import Util.Retrofit.ApiUtils;
 import Util.Retrofit.RetrofitService;
 import Util.Retrofit.RetrofitServiceHouseOwner;
@@ -28,7 +36,7 @@ import retrofit2.Response;
 
 public class Tab1 extends Fragment {
 
-    EditText username;
+    EditText username, password;
     boolean res;
 
     @Nullable
@@ -46,6 +54,26 @@ public class Tab1 extends Fragment {
                 }
             }
         });
+
+        password=(EditText) rootView.findViewById(R.id.register_rentee_password);
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if(!hasFocus)
+                {
+                    PasswordValidator passwordValidator = new PasswordValidator();
+                    if(!passwordValidator.validate(password.getText().toString()))
+                    {
+                        Toast.makeText(getContext(), "Your password does not meet system requirements. Please retype a most secure password" , Toast.LENGTH_LONG).show();
+                        password.setText("");
+                        password.setFocusable(true);
+                    }
+                }
+            }
+        });
+
+
         return rootView;
     }
 

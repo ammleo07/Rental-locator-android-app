@@ -2,8 +2,11 @@ package Util.Retrofit;
 
 import android.database.Observable;
 
+import java.util.List;
+
 import Model.HouseOwnerForm;
 import Model.RenteeForm;
+import Model.Transaction;
 import Model.User;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -29,6 +32,12 @@ public interface RetrofitServiceHouseOwner {
     @GET("client/validate/username")
     Call<String> validateUsername(@Query("username") String username);
 
+    @GET("client/address/barangay")
+    Call<List<String>> getBarangayByCity(@Query("cityName") String cityName);
+
+    @GET("client/address/streets")
+    Call<List<String>> getStreetByBarangay(@Query("cityName") String cityName,@Query("barangay") String barangay);
+
     @GET("client/owner/get/profile")
     Call<HouseOwnerForm> getProfile(@Query("username") String username);
 
@@ -37,6 +46,9 @@ public interface RetrofitServiceHouseOwner {
 
     @POST("client/owner/update/house/profile")
     Call<HouseOwnerForm> updateHouse(@Body HouseOwnerForm houseOwnerForm);
+
+    @POST("client/send/notification/to/rentee")
+    Call<Transaction> sendAccepted(@Body Transaction transaction);
 
     @POST("client/owner/update/house/address")
     Call<HouseOwnerForm> updateHouseAddress(@Body HouseOwnerForm houseOwnerForm);

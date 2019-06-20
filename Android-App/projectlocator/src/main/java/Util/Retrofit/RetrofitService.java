@@ -46,8 +46,14 @@ public interface RetrofitService {
     @POST("client/send/notification/to/owner")
     Call<Transaction> sendInquiry(@Body Transaction transaction);
 
+    @POST("client/set/transaction/status")
+    Call<String> setStatus(@Body Transaction transaction);
+
     @GET("client/house/address/cities")
     Call<List<String>> getCities();
+
+    @GET("client/house/types")
+    Call<List<String>> getHouseTypes();
 
     @GET("client/house/address/barangay")
     Call<List<String>> getBarangay(@Query("city") String city);

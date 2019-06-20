@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,7 +97,7 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 EditText middleName = (EditText) findViewById(R.id.register_rentee_middle_name);
                 EditText lastName = (EditText) findViewById(R.id.register_rentee_last_name);
                 EditText contactNumber = (EditText) findViewById(R.id.register_rentee_contact_number);
-                EditText houseType = (EditText) findViewById(R.id.register_rentee_house_type);
+                Spinner houseType = (Spinner) findViewById(R.id.houseType_list);
                 EditText minPrice = (EditText) findViewById(R.id.register_rentee_min_price);
                 EditText maxPrice = (EditText) findViewById(R.id.register_rentee_max_price);
 
@@ -116,7 +117,7 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 Rentee rentee = new Rentee();
                 rentee.setContactNumber(contactNumber.getText().toString());
                 rentee.setUsername(user.getUsername());
-                rentee.setHouseType("condo");
+                rentee.setHouseType(houseType.getSelectedItem().toString());
                 rentee.setMinPriceRange(Double.parseDouble(minPrice.getText().toString()));
                 rentee.setMaxPriceRange(Double.parseDouble(maxPrice.getText().toString()));
 

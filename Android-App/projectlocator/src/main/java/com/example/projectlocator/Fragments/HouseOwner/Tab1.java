@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.projectlocator.R;
 
+import Util.PasswordValidator;
 import Util.Retrofit.ApiUtils;
 import Util.Retrofit.RetrofitService;
 import Util.Retrofit.RetrofitServiceHouseOwner;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class Tab1 extends Fragment {
 
-    EditText username;
+    EditText username,password;
 
     @Nullable
     @Override
@@ -43,6 +44,25 @@ public class Tab1 extends Fragment {
                 }
             }
         });
+
+        password=(EditText) rootView.findViewById(R.id.register_house_owner_password);
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if(!hasFocus)
+                {
+                    PasswordValidator passwordValidator = new PasswordValidator();
+                    if(!passwordValidator.validate(password.getText().toString()))
+                    {
+                        Toast.makeText(getContext(), "Your password does not meet system requirements. Please retype a most secure password" , Toast.LENGTH_LONG).show();
+                        password.setText("");
+                        password.setFocusable(true);
+                    }
+                }
+            }
+        });
+
         return rootView;
     }
 

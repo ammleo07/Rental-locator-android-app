@@ -64,6 +64,45 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:id="@+id/transaction_owner_token_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:visibility="gone"
+        android:layout_below="@+id/transaction_status"
+        android:layout_alignLeft="@+id/transaction_status"
+        android:layout_alignStart="@+id/transaction_status"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/transaction_rentee_contact_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:visibility="gone"
+        android:layout_below="@+id/transaction_status"
+        android:layout_alignLeft="@+id/transaction_status"
+        android:layout_alignStart="@+id/transaction_status"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/transaction_rentee_token_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:visibility="gone"
+        android:layout_below="@+id/transaction_status"
+        android:layout_alignLeft="@+id/transaction_status"
+        android:layout_alignStart="@+id/transaction_status"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:id="@+id/accept_btn"
         android:layout_width="wrap_content"

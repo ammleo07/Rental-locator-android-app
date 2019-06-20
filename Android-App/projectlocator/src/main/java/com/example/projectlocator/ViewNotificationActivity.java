@@ -36,6 +36,11 @@ public class ViewNotificationActivity extends AppCompatActivity {
         Button callBtn = (Button) findViewById(R.id.call_btn);
         callBtn.setText("Call " + transaction.getRenteeContactNumber());
         contentView.setText(contentText);
+
+        SharedPreferences sharedpreferences =getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee")) {
+            callBtn.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void makeCall(View v)
@@ -81,6 +86,7 @@ public class ViewNotificationActivity extends AppCompatActivity {
             }
 
             startActivity(intent);
+            finish();
 
         }
         catch (Exception ex)

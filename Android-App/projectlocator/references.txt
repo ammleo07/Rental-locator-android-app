@@ -38,3 +38,7 @@ https://medium.com/android-school/test-fcm-notification-with-postman-f91ba08aacc
 https://stackoverflow.com/questions/38479668/firebase-api-is-not-sending-push-notifications-when-using-the-api
 https://www.youtube.com/watch?v=j6kQ9gikU-A
 https://stackoverflow.com/questions/37584693/error-in-remotemessage-getnotification-getbody
+https://stackoverflow.com/questions/817396/mysql-timestamp-only-on-create
+https://stackoverflow.com/questions/18962757/when-is-a-timestamp-auto-updated
+https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event
+https://www.oodlestechnologies.com/blogs/How-to-handle-DATETIME-values-with--zero-Timestamp-in-JDBC/

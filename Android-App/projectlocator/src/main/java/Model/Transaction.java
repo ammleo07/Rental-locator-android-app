@@ -100,6 +100,21 @@ public class Transaction extends RealmObject implements Serializable {
     @Expose
     String ownerTokenId;
 
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    @SerializedName("origin")
+    @Expose
+    String origin;
+
+    @SerializedName("dateSold")
+    @Expose
+    String dateSold;
 
 
 }
