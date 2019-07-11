@@ -29,6 +29,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -93,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private ImageView logoView;
     private RetrofitService mService;
     GpsTracker gpsTracker;
+    String HOSTSERVER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -450,6 +452,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public boolean validateUser(final User user) {
         boolean result=false;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.validateUser(user).enqueue(new Callback<String>() {
 
@@ -475,6 +479,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         editor.putString("username", user.getUsername());
                         editor.putString("tokenId", FirebaseInstanceId.getInstance().getToken());
                         editor.putString("userType", response.body().split(":")[1]);
+                        editor.putString("SERVER", HOSTSERVER);
                         editor.commit();
 
                         startActivity(intent);
@@ -506,6 +511,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         return result;
+    }
+
+    public void changeServer(View v)
+    {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Change Server: Input Ip Address of the Server");
+
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //m_Text = input.getText().toString();
+                    HOSTSERVER=input.getText().toString();
+                    SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString("SERVER", input.getText().toString());
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Server:" + sharedpreferences.getString("SERVER",null) , Toast.LENGTH_LONG).show();
+
+
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
     }
 
     public boolean forgotPassword(final User user) {

@@ -1,7 +1,9 @@
 package com.example.projectlocator.Fragments.HouseOwner;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -47,6 +49,7 @@ public class Tab2 extends Fragment {
         final EditText addressTown = (EditText) rootView.findViewById(R.id.register_house_address_town);
         final Spinner addressBrgy = (Spinner) rootView.findViewById(R.id.barangay_list);
         final Spinner addressStreet = (Spinner) rootView.findViewById(R.id.street_list);
+        final Spinner numberOfSlots = (Spinner) rootView.findViewById(R.id.register_house_number_of_slots);
 
         String[] initialStreet = {"Select Street"};
         final ArrayAdapter<String> spinnerArrayAdapterStreet = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(initialStreet));
@@ -57,6 +60,11 @@ public class Tab2 extends Fragment {
         final ArrayAdapter<String> spinnerArrayAdapterBrgy = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(initialBrgy));
         spinnerArrayAdapterBrgy.setDropDownViewResource(R.layout.spinner_item);
         addressBrgy.setAdapter(spinnerArrayAdapterBrgy);
+
+        String[] slots = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        final ArrayAdapter<String> spinnerArrayAdapterSlots = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(slots));
+        spinnerArrayAdapterSlots.setDropDownViewResource(R.layout.spinner_item);
+        numberOfSlots.setAdapter(spinnerArrayAdapterSlots);
 
 
         getHouseTypes(rootView);
@@ -91,6 +99,8 @@ public class Tab2 extends Fragment {
     public void getHouseTypes(final View view) {
         houseType = (Spinner) view.findViewById(R.id.houseType_list);
         RetrofitService mService;
+        SharedPreferences sharedpreferences =view.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.getHouseTypes().enqueue(new Callback<List<String>>() {
 

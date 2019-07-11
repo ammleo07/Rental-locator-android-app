@@ -1,10 +1,13 @@
 package Util;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class RecyclerViewHoldersHouseGallery extends RecyclerView.ViewHolder
 
     public ImageView houseImage;
     public TextView houseId;
+    public ProgressBar progressBar;
 
 
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
@@ -31,6 +35,7 @@ public class RecyclerViewHoldersHouseGallery extends RecyclerView.ViewHolder
         super(itemView);
         itemView.setOnClickListener(this);
         houseImage = itemView.findViewById(R.id.gallery_image_view);
+        progressBar = itemView.findViewById(R.id.gallery_image_progress);
     }
 
     @Override
@@ -41,6 +46,8 @@ public class RecyclerViewHoldersHouseGallery extends RecyclerView.ViewHolder
         //view.getContext().startActivity(intent);
 
         RetrofitService mService;
+        SharedPreferences sharedpreferences =view.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.viewHouseDetails(Integer.parseInt(houseId.getText().toString())).enqueue(new Callback<HouseOwnerForm>() {
 

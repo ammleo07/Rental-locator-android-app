@@ -70,6 +70,8 @@ public class RenteePortalActivity extends AppCompatActivity
     {
         progressBar.setVisibility(View.VISIBLE);
         RetrofitService mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.getProfile(username).enqueue(new Callback<RenteeForm>() {
 
@@ -138,6 +140,8 @@ public class RenteePortalActivity extends AppCompatActivity
     public void getCities()
     {
         RetrofitService mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.getCities().enqueue(new Callback<List<String>>() {
 

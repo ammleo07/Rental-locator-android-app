@@ -127,8 +127,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RenteePortalActivity" />
         </activity>
-        <activity android:name=".ViewTransactionsActivity"
-            android:label="Transactions"></activity>
+        <activity
+            android:name=".ViewTransactionsActivity"
+            android:label="Transactions" />
+        <activity android:name=".ViewCostEstimatesActivity"></activity>
     </application>
 
 </manifest>

@@ -44,6 +44,9 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         TextView houseOwner = (TextView) findViewById(R.id.view_house_details_house_owner);
         TextView contactNumber = (TextView) findViewById(R.id.view_house_details_house_owner_contact_number);
         TextView callButton = (TextView) findViewById(R.id.view_house_details_call);
+        TextView isFlood = (TextView) findViewById(R.id.view_house_details_is_Flood);
+        TextView isCrime = (TextView) findViewById(R.id.view_house_details_is_Crime);
+        TextView addressId = (TextView) findViewById(R.id.view_house_details_address_id);
 
         //Toast.makeText(getApplicationContext(), "Name:" + houseOwnerForm.getHouse().getHouseName() , Toast.LENGTH_LONG).show();
         houseName.setText("House Name:" + houseOwnerForm.getHouse().getHouseName());
@@ -56,7 +59,9 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         contactNumber.setText("Owner's Contact Number:"+houseOwnerForm.getHouseOwner().getContactNumber());
         numbertoContact = houseOwnerForm.getHouseOwner().getContactNumber();
         callButton.setText("Call " + houseOwnerForm.getHouseOwner().getContactNumber());
-
+        isFlood.setText("Is Prone to Flood:" + (houseOwnerForm.getAddress().getIsFlood() == null ? "No" :houseOwnerForm.getAddress().getIsFlood()));
+        isCrime.setText("Is Prone to Crime:" + (houseOwnerForm.getAddress().getIsCrime() == null ? "No" : houseOwnerForm.getAddress().getIsCrime()));
+        addressId.setText(houseOwnerForm.getAddress().getId() + "");
 
         //Toast.makeText(getApplicationContext(), "Token:" + FirebaseInstanceId.getInstance().getToken() , Toast.LENGTH_LONG).show();
     }
@@ -97,6 +102,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
             transaction.setOrigin("rentee");
 
             Toast.makeText(getApplicationContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
+            //SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
             RetrofitService mService= ApiUtils.getSOService();
             mService.sendInquiry(transaction).enqueue(new Callback<Transaction>() {
 
@@ -151,8 +158,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
     {
         try {
 
-            Intent intent = new Intent(ViewHouseDetailsActivity.this,HouseGalleryActivity.class);
-            intent.putExtra("User",houseOwnerForm);
+            Intent intent = new Intent(ViewHouseDetailsActivity.this, HouseGalleryActivity.class);
+            intent.putExtra("username", houseOwnerForm.getUser().getUsername());
             startActivity(intent);
 
         }
@@ -163,5 +170,29 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         }
 
     }
+
+    public void viewCostEstimates(View v)
+    {
+        try {
+
+            Intent intent = new Intent(ViewHouseDetailsActivity.this, ViewCostEstimatesActivity.class);
+            intent.putExtra("addressId", houseOwnerForm.getAddress().getId() + "");
+            startActivity(intent);
+
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
 
 }

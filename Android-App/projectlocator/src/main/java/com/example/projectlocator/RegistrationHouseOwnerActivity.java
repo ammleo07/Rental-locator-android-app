@@ -68,10 +68,10 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     Button btnPickImage;
     public EditText houseOwnerUsername, houseOwnerPassword,houseOwnerFirstName,houseOwnerMiddleName,houseOwnerLastName,houseOwnerContactNumber;
-    public EditText houseName,monthlyFee,noOfSlots;
+    public EditText houseName,monthlyFee;
     public EditText town,houseNo;
     public CheckBox isNegotiable;
-    Spinner houseType,street,brgy;
+    Spinner houseType,street,brgy, noOfSlots;
     View formTab1,formTab2,progressBar,appBar;
     ProgressDialog progressDialog;
     public Fragment fragmentTab1, fragmentTab2;
@@ -119,7 +119,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 houseType = (Spinner) findViewById(R.id.houseType_list);
                 monthlyFee = (EditText) findViewById(R.id.register_house_monthly_fee);
                 isNegotiable = (CheckBox) findViewById(R.id.register_house_is_negotiable);
-                noOfSlots = (EditText) findViewById(R.id.register_house_number_of_slots);
+                noOfSlots = (Spinner) findViewById(R.id.register_house_number_of_slots);
                 houseNo = (EditText) findViewById(R.id.register_house_address_number);
                 street = (Spinner) findViewById(R.id.street_list);
                 brgy = (Spinner) findViewById(R.id.barangay_list);
@@ -148,7 +148,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
 
                 House house = new House();
                 house.setHouseType(houseType.getSelectedItem().toString());
-                house.setNumberOfSlots(Integer.parseInt(noOfSlots.getText().toString()));
+                house.setNumberOfSlots(Integer.parseInt(noOfSlots.getSelectedItem().toString()));
                 house.setMonthlyFee(Double.parseDouble(monthlyFee.getText().toString()));
                 house.setHouseName(houseName.getText().toString());
                 house.setIsNegotiable(isNegotiable.isChecked() ? "Y": "N");

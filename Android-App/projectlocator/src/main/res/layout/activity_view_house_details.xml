@@ -52,6 +52,13 @@
     android:layout_alignParentEnd="true" />
 
     <TextView
+        android:id="@+id/view_house_details_address_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Address"/>
+
+    <TextView
         android:id="@+id/view_house_details_house_latitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,14 +83,37 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:id="@+id/view_house_details_is_Crime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is Prone to crime?"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_house_longitude"
+        android:layout_alignLeft="@+id/view_house_details_house_longitude"
+        android:layout_alignStart="@+id/view_house_details_house_longitude"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/view_house_details_is_Flood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is Prone to Flood?"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_is_Crime"
+        android:layout_alignLeft="@+id/view_house_details_is_Crime"
+        android:layout_alignStart="@+id/view_house_details_is_Crime"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
         android:id="@+id/view_house_details_house_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Owner"
         android:textColor="#000"
-        android:layout_below="@+id/view_house_details_house_longitude"
-        android:layout_alignLeft="@+id/view_house_details_house_longitude"
-        android:layout_alignStart="@+id/view_house_details_house_longitude"
+        android:layout_below="@+id/view_house_details_is_Flood"
+        android:layout_alignLeft="@+id/view_house_details_is_Flood"
+        android:layout_alignStart="@+id/view_house_details_is_Flood"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -140,6 +170,18 @@
         android:layout_alignStart="@+id/view_house_details_view_Map"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+    <Button
+        android:id="@+id/view_house_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Cost Estimates"
+        android:onClick="viewCostEstimates"
+        android:textColor="#000"
+        android:layout_below="@+id/view_house_details_gallery"
+        android:layout_alignLeft="@+id/view_house_details_gallery"
+        android:layout_alignStart="@+id/view_house_details_gallery"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
     <Button
@@ -149,9 +191,9 @@
         android:text="Notify Owner"
         android:onClick="notifyOwner"
         android:textColor="#000"
-        android:layout_below="@+id/view_house_details_gallery"
-        android:layout_alignLeft="@+id/view_house_details_gallery"
-        android:layout_alignStart="@+id/view_house_details_gallery"
+        android:layout_below="@+id/view_house_cost"
+        android:layout_alignLeft="@+id/view_house_cost"
+        android:layout_alignStart="@+id/view_house_cost"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

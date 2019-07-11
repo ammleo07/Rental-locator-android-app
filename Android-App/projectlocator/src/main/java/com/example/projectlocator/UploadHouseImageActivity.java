@@ -1,6 +1,8 @@
 package com.example.projectlocator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.File;
@@ -32,6 +35,7 @@ public class UploadHouseImageActivity extends AppCompatActivity {
 
     String fileSelected;
     HouseOwnerForm ownerForm;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +92,8 @@ public class UploadHouseImageActivity extends AppCompatActivity {
 
     public void uploadImage(String filepath)
     {
-        //progressBar.setVisibility(View.VISIBLE);
+        progressBar = findViewById(R.id.upload_progress);
+        progressBar.setVisibility(View.VISIBLE);
         Toast.makeText(getApplicationContext(), "Uploading .....", Toast.LENGTH_LONG).show();
         final Button chooseImage = (Button) findViewById(R.id.choose_image);
         final Button uploadbtn = (Button) findViewById(R.id.uploadBtn);
@@ -104,6 +109,8 @@ public class UploadHouseImageActivity extends AppCompatActivity {
         RequestBody userId =
                 RequestBody.create(MediaType.parse("multipart/form-data"), ownerForm.getHouse().getId() + "");
         RetrofitServiceHouseOwner mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getHomeOwnerService();
 
 
@@ -116,6 +123,7 @@ public class UploadHouseImageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Uploading Image:Success", Toast.LENGTH_LONG).show();
                 uploadbtn.setEnabled(true);
                 chooseImage.setEnabled(true);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -124,6 +132,7 @@ public class UploadHouseImageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Uploading error", Toast.LENGTH_LONG).show();
                 uploadbtn.setEnabled(true);
                 chooseImage.setEnabled(true);
+                progressBar.setVisibility(View.GONE);
             }
         });
     }

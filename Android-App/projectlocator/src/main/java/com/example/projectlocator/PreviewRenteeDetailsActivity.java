@@ -2,7 +2,9 @@ package com.example.projectlocator;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -177,6 +179,8 @@ public class PreviewRenteeDetailsActivity extends AppCompatActivity {
     public boolean saveUser(final RenteeForm rentee) {
         boolean result=false;
         RetrofitService mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.saveUser(rentee).enqueue(new Callback<String>() {
 

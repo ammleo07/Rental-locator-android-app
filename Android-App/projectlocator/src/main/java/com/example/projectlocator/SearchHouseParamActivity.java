@@ -1,6 +1,8 @@
 package com.example.projectlocator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -124,6 +126,8 @@ public class SearchHouseParamActivity extends AppCompatActivity {
     public void getBarangay(String city)
     {
         RetrofitService mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.getBarangay(city).enqueue(new Callback<List<String>>() {
 
@@ -232,7 +236,11 @@ public class SearchHouseParamActivity extends AppCompatActivity {
         searchCriteria.setCity(spinner_city.getSelectedItem().toString());
 
             RetrofitService mService;
-            mService= ApiUtils.getSOService();
+            SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+            Toast.makeText(getApplicationContext(), "Server:" + ApiUtils.BASE_URL , Toast.LENGTH_LONG).show();
+
+        mService= ApiUtils.getSOService();
             mService.searchHouse(searchCriteria).enqueue(new Callback<List<House>>() {
 
                 @Override
@@ -255,7 +263,8 @@ public class SearchHouseParamActivity extends AppCompatActivity {
 
                     }else {
                         int statusCode  = response.code();
-                        Toast.makeText(getApplicationContext(), "Error has been occured on the server:" + statusCode , Toast.LENGTH_LONG).show();
+                        //response.errorBody().toString();
+                        Toast.makeText(getApplicationContext(), "Error has been occured on the server:" + statusCode + ":" + response.errorBody().toString() , Toast.LENGTH_LONG).show();
                     }
                 }
 

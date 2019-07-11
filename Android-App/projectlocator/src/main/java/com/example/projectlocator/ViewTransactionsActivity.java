@@ -48,6 +48,8 @@ public class ViewTransactionsActivity extends AppCompatActivity {
             SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
             String username=sharedpreferences.getString("username",null);
             //Toast.makeText(getApplicationContext(), "Loading Transaction List..", Toast.LENGTH_LONG).show();
+            //SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
             RetrofitService mService= ApiUtils.getSOService();
             mService.getTransactions(username).enqueue(new Callback<List<Transaction>>() {
 
@@ -88,5 +90,11 @@ public class ViewTransactionsActivity extends AppCompatActivity {
             transactionList=null;
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }

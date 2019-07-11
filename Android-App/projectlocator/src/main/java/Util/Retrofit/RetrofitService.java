@@ -2,6 +2,7 @@ package Util.Retrofit;
 
 import java.util.List;
 
+import Model.CostEstimates;
 import Model.House;
 import Model.HouseOwnerForm;
 import Model.Rentee;
@@ -61,8 +62,12 @@ public interface RetrofitService {
     @POST("/client/search/house")
     Call<List<House>> searchHouse(@Body SearchCriteria searchCriteria);
 
+
     @GET("client/view/house/details")
     Call<HouseOwnerForm> viewHouseDetails(@Query("id") int id);
+
+    @GET("client/house/address/cost/estimates")
+    Call<List<CostEstimates>> viewCostEstimates(@Query("addressId") String addressId);
 
     @GET("client/get/transactions")
     Call<List<Transaction>> getTransactions(@Query("username") String username);

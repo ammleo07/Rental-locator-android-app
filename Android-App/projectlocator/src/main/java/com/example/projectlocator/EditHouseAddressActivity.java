@@ -1,6 +1,8 @@
 package com.example.projectlocator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -148,6 +150,8 @@ public class EditHouseAddressActivity extends AppCompatActivity {
     {
 
         RetrofitServiceHouseOwner mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getHomeOwnerService();
         mService.updateHouseAddress(owner).enqueue(new Callback<HouseOwnerForm>() {
 

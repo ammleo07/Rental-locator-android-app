@@ -9,6 +9,24 @@ public class Address implements Serializable{
     int entityId;
     String houseNo;
     String street;
+    String isFlood;
+    String isCrime;
+
+    public String getIsFlood() {
+        return isFlood;
+    }
+
+    public void setIsFlood(String isFlood) {
+        this.isFlood = isFlood;
+    }
+
+    public String getIsCrime() {
+        return isCrime;
+    }
+
+    public void setIsCrime(String isCrime) {
+        this.isCrime = isCrime;
+    }
 
     public double getLatitude() {
         return latitude;

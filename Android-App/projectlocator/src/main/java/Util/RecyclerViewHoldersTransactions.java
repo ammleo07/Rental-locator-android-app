@@ -81,6 +81,8 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
             transaction.setOrigin("house owner");
             Toast.makeText(v.getContext(), "data: " + transaction.getHouseOwner(), Toast.LENGTH_LONG).show();
             Toast.makeText(v.getContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
+            //SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
             RetrofitServiceHouseOwner mService= ApiUtils.getHomeOwnerService();
             mService.sendAccepted(transaction).enqueue(new Callback<Transaction>() {
 
@@ -130,6 +132,8 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
             transaction.setStatus(status);
             transaction.setOrigin("rentee");
             Toast.makeText(v.getContext(), sharedpreferences.getString("username",null) +  " was confirmed acceptance", Toast.LENGTH_LONG).show();
+            //SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
             RetrofitService mService= ApiUtils.getSOService();
             mService.setStatus(transaction).enqueue(new Callback<String>() {
 

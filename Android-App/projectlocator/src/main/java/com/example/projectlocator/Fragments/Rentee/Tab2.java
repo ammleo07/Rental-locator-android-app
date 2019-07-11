@@ -1,6 +1,8 @@
 package com.example.projectlocator.Fragments.Rentee;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -46,6 +48,8 @@ public class Tab2 extends Fragment {
     public void getHouseTypes(final View view) {
         spinner = (Spinner) view.findViewById(R.id.houseType_list);
         RetrofitService mService;
+        SharedPreferences sharedpreferences =view.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getSOService();
         mService.getHouseTypes().enqueue(new Callback<List<String>>() {
 

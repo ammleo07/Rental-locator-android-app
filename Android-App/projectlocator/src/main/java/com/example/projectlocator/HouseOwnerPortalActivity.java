@@ -65,6 +65,8 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
     {
         progressBar.setVisibility(View.VISIBLE);
         RetrofitServiceHouseOwner mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getHomeOwnerService();
         mService.getProfile(username).enqueue(new Callback<HouseOwnerForm>() {
 
@@ -174,7 +176,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(HouseOwnerPortalActivity.this, HouseGalleryActivity.class);
-            intent.putExtra("User", ownerForm);
+            intent.putExtra("username", ownerForm.getUser().getUsername());
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {

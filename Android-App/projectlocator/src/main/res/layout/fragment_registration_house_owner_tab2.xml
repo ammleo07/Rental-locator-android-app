@@ -109,18 +109,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <!--<EditText-->
+                    <!--android:id="@+id/register_house_number_of_slots"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Number of Slots"-->
+                    <!--android:imeActionId="13"-->
+                    <!--android:imeActionLabel="Number of Slots"-->
+                    <!--android:imeOptions="actionUnspecified"-->
+                    <!--android:inputType="number"-->
+                    <!--android:text="0"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:singleLine="true" />-->
+                <Spinner
                     android:id="@+id/register_house_number_of_slots"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Number of Slots"
-                    android:imeActionId="13"
-                    android:imeActionLabel="Number of Slots"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="number"
-                    android:text="0"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:layout_height="55dp"
+                    android:tooltipText="Select Barangay"
+                    android:layout_below="@id/register_house_address_brgy" />
+
 
             </android.support.design.widget.TextInputLayout>
 

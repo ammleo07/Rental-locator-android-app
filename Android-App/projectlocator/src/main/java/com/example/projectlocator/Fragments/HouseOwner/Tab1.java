@@ -1,6 +1,8 @@
 package com.example.projectlocator.Fragments.HouseOwner;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -70,6 +72,8 @@ public class Tab1 extends Fragment {
         final EditText txtUsername = (EditText) view.findViewById(R.id.register_house_owner_username);
         final boolean result=false;
         RetrofitServiceHouseOwner mService;
+        SharedPreferences sharedpreferences =view.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getHomeOwnerService();
         mService.validateUsername(username).enqueue(new Callback<String>() {
 

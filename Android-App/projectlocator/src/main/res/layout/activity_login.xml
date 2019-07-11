@@ -24,6 +24,8 @@
         android:id="@+id/imgLogo"
         android:layout_width="match_parent"
         android:layout_height="82dp"
+        android:onClick="changeServer"
+        android:clickable="true"
         app:srcCompat="@mipmap/locator"
         tools:srcCompat="@mipmap/locator" />
 
