@@ -60,30 +60,30 @@
 
             </TableRow>
 
-            <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:padding="2dp"
-                    android:background="#0079D6">
+            <!--<TableRow-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:padding="2dp"-->
+                    <!--android:background="#0079D6">-->
 
-                    <TextView
-                        android:text="Fields"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"/>
+                    <!--<TextView-->
+                        <!--android:text="Fields"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_column="1"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textColor="#FFFFFF"/>-->
 
 
-                    <TextView
-                        android:text="Values"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="2"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"/>
+                    <!--<TextView-->
+                        <!--android:text="Values"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_column="2"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textColor="#FFFFFF"/>-->
 
-                </TableRow>
+                <!--</TableRow>-->
 
 
                 <TableRow
@@ -96,8 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Username"
-                        android:textAlignment="center" />
+                        android:text="Username" />
 
 
                     <TextView
@@ -105,7 +104,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:textAlignment="center"
                         />
                 </TableRow>
 
@@ -119,8 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Name"
-                        android:textAlignment="center" />
+                        android:text="Name" />
 
 
                     <TextView
@@ -128,7 +125,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:textAlignment="center"
                         />
                 </TableRow>
 
@@ -142,8 +138,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Contact Number"
-                        android:textAlignment="center" />
+                        android:text="Contact Number" />
 
 
                     <TextView
@@ -151,7 +146,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:textAlignment="center"
                         />
                 </TableRow>
 
@@ -165,8 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Preferred House Type"
-                        android:textAlignment="center" />
+                        android:text="Preferred House Type" />
 
 
                     <TextView
@@ -174,7 +167,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:textAlignment="center"
                         />
                 </TableRow>
 
@@ -188,8 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Preferred Price Ranges:"
-                        android:textAlignment="center" />
+                        android:text="Preferred Price Ranges:" />
 
 
                     <TextView
@@ -197,7 +188,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
-                        android:textAlignment="center"
                         />
                 </TableRow>
 

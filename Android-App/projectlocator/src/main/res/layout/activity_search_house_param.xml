@@ -222,16 +222,6 @@
             tools:ignore="UselessParent">
 
             <Button
-                android:id="@+id/save_house_details"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:onClick="search"
-                android:background="#0079D6"
-                android:text="Search Now" />
-            <Button
                 android:id="@+id/go_back_house_details"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp"
@@ -241,6 +231,18 @@
                 android:background="#0079D6"
                 android:text="Back"
                 android:onClick="back"/>
+
+            <Button
+                android:id="@+id/save_house_details"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:onClick="search"
+                android:background="#0079D6"
+                android:text="Search Now" />
+
 
         </LinearLayout>
     </FrameLayout>

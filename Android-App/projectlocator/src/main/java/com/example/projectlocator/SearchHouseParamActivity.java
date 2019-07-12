@@ -62,7 +62,7 @@ public class SearchHouseParamActivity extends AppCompatActivity {
         brgyRow = findViewById(R.id.brgy_row);
 
         houseType.setText(renteeForm.getRentee().getHouseType());
-        priceRange.setText(renteeForm.getRentee().getMinPriceRange() +"to" + renteeForm.getRentee().getMaxPriceRange());
+        priceRange.setText("Php " +Math.round(renteeForm.getRentee().getMinPriceRange()) +" to Php " + Math.round(renteeForm.getRentee().getMaxPriceRange()));
         //Toast.makeText(getApplicationContext(), cities.toString() , Toast.LENGTH_LONG).show();
         final List<String> finalCities = new ArrayList<>(Arrays.asList(getIntent().getStringArrayExtra("cities")));
 

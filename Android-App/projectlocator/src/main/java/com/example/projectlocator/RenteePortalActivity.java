@@ -92,7 +92,7 @@ public class RenteePortalActivity extends AppCompatActivity
                         fullName.setText(response.body().getUser().getFirstName() + " " + response.body().getUser().getMiddleName() + " " + response.body().getUser().getLastName());
                         houseType.setText(response.body().getRentee().getHouseType());
                         contactNumber.setText(response.body().getRentee().getContactNumber());
-                        priceRange.setText(response.body().getRentee().getMinPriceRange() + "-" + response.body().getRentee().getMaxPriceRange());
+                        priceRange.setText("Php " +Math.round(response.body().getRentee().getMinPriceRange()) + " - Php " + Math.round(response.body().getRentee().getMaxPriceRange()));
 
                         renteeForm = response.body();
                     }

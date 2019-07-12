@@ -90,7 +90,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
                         fullName.setText(response.body().getUser().getFirstName() + " " + response.body().getUser().getMiddleName() + " " + response.body().getUser().getLastName());
                         houseType.setText(response.body().getHouse().getHouseType());
                         contactNumber.setText(response.body().getHouseOwner().getContactNumber());
-                        monthlyFees.setText(response.body().getHouse().getMonthlyFee() + "");
+                        monthlyFees.setText(Math.round(response.body().getHouse().getMonthlyFee()) + "");
                         numberOfSlots.setText(response.body().getHouse().getNumberOfSlots() + "");
                         address.setText(response.body().getAddress().getFullAddress());
                         houseName.setText(response.body().getHouse().getHouseName());

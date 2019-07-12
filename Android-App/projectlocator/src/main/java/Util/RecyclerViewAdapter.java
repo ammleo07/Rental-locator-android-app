@@ -32,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
         holder.houseName.setText("House Name: " + itemList.get(position).getHouseName());
         holder.houseType.setText("House Type: " + itemList.get(position).getHouseType());
-        holder.housePrice.setText("Monthly Rental Fee: " + itemList.get(position).getMonthlyFee());
+        holder.housePrice.setText("Monthly Rental : Php " + Math.round(itemList.get(position).getMonthlyFee()));
         holder.houseAddress.setText("Address: " + itemList.get(position).getFullAddress());
         holder.houseId.setText(itemList.get(position).getId() + "");
     }
