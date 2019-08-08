@@ -50,6 +50,8 @@ public class Tab2 extends Fragment {
         final Spinner addressBrgy = (Spinner) rootView.findViewById(R.id.barangay_list);
         final Spinner addressStreet = (Spinner) rootView.findViewById(R.id.street_list);
         final Spinner numberOfSlots = (Spinner) rootView.findViewById(R.id.register_house_number_of_slots);
+        final Spinner boarderType = (Spinner) rootView.findViewById(R.id.boarderType_list);
+
 
         String[] initialStreet = {"Select Street"};
         final ArrayAdapter<String> spinnerArrayAdapterStreet = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(initialStreet));
@@ -65,6 +67,12 @@ public class Tab2 extends Fragment {
         final ArrayAdapter<String> spinnerArrayAdapterSlots = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(slots));
         spinnerArrayAdapterSlots.setDropDownViewResource(R.layout.spinner_item);
         numberOfSlots.setAdapter(spinnerArrayAdapterSlots);
+
+        String[] boarderType_list = {"Select Boarder Type", "Male", "Female", "Both"};
+        final ArrayAdapter<String> spinnerArrayAdapterboarderType_list = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(boarderType_list));
+        spinnerArrayAdapterboarderType_list.setDropDownViewResource(R.layout.spinner_item);
+        boarderType.setAdapter(spinnerArrayAdapterboarderType_list);
+
 
 
         getHouseTypes(rootView);

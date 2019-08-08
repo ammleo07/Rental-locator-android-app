@@ -10,6 +10,16 @@ public class House implements Serializable{
     int ownerId;
     String houseName;
     String houseType;
+
+    public String getBoarderType() {
+        return boarderType;
+    }
+
+    public void setBoarderType(String boarderType) {
+        this.boarderType = boarderType;
+    }
+
+    String boarderType;
     int numberOfSlots;
     double monthlyFee;
 

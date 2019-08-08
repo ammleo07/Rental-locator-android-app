@@ -31,7 +31,7 @@
             <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:id="@+id/house_owner_profile"
-                android:layout_height="300dp"
+                android:layout_height="350dp"
                 android:layout_marginTop="50dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
@@ -48,6 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
+                        android:textSize="18dp"
                         android:textColor="#FFFFFF"/>
 
 
@@ -96,13 +97,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Username" />
+                        android:textSize="16dp"
+                        android:text="Username: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_username"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:scrollHorizontally="false"
+                        android:lines="2"
+                        android:textSize="16dp"
                         android:layout_column="2" />
 
                 </TableRow>
@@ -117,13 +122,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Name" />
+                        android:textSize="16dp"
+                        android:text="Name: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_fullName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:scrollHorizontally="false"
+                        android:lines="2"
                         android:layout_column="2" />
 
                 </TableRow>
@@ -138,12 +147,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Contact Number" />
+                        android:textSize="16dp"
+                        android:text="Contact Number: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_contact_number"
                         android:layout_width="wrap_content"
+                        android:textSize="16dp"
                         android:layout_height="wrap_content"
                         android:layout_column="2" />
                 </TableRow>
@@ -159,6 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="2"
+                        android:textSize="16dp"
                         android:textColor="#FFFFFF"/>
 
 
@@ -182,13 +194,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="House Name" />
+                        android:textSize="16dp"
+                        android:text="House Name: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_house_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -204,13 +218,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="House Type" />
+                        android:textSize="16dp"
+                        android:text="House Type: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_house_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -226,13 +242,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Monthly Rental" />
+                        android:textSize="16dp"
+                        android:text="Monthly Rental: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_monthly_fees"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -248,13 +266,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Number of Slots" />
+                        android:textSize="16dp"
+                        android:text="Number of Slots: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_house_number_slots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2" />
                 </TableRow>
 
@@ -269,14 +289,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Address" />
+                        android:textSize="16dp"
+                        android:text="Address: " />
 
 
                     <TextView
                         android:id="@+id/portal_house_owner_house_address"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:scrollHorizontally="false"
                         android:layout_column="2"
+                        android:lines="2"
+                        android:textSize="16dp"
                         android:maxLines="5" />
                 </TableRow>
 

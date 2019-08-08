@@ -178,6 +178,7 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
         TextView contactNumber = (TextView) findViewById(R.id.preview_house_owner_contact_number);
         TextView houseName = (TextView) findViewById(R.id.preview_house_house_name);
         TextView houseType = (TextView) findViewById(R.id.preview_house_house_type);
+        TextView boarderType = (TextView) findViewById(R.id.preview_house_boarder_type);
         TextView monthlyFees = (TextView) findViewById(R.id.preview_house_monthly_fee);
         TextView numberOfSlots = (TextView) findViewById(R.id.preview_house_number_of_slots);
         TextView houseNo = (TextView) findViewById(R.id.preview_address_house_number);
@@ -192,13 +193,14 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
         username.setText(form.getUser().getUsername());
         password.setText(form.getUser().getPassword());
         name.setText(form.getUser().getFirstName() + " " + form.getUser().getMiddleName() + " " + form.getUser().getLastName());
-        contactNumber.setText(form.getHouseOwner().getContactNumber());
+        contactNumber.setText(": "+form.getHouseOwner().getContactNumber());
         houseName.setText(form.getHouse().getHouseName());
         houseType.setText(form.getHouse().getHouseType());
+        boarderType.setText(form.getHouse().getBoarderType());
         monthlyFees.setText(form.getHouse().getMonthlyFee() + ":" + (form.getHouse().getIsNegotiable().equalsIgnoreCase("Y") ? "Negotiable" : "Non=t Negotiable"));
         numberOfSlots.setText(form.getHouse().getNumberOfSlots() + "");
 
-        houseNo.setText(form.getAddress().getHouseNo());
+        houseNo.setText(": "+form.getAddress().getHouseNo());
         street.setText(form.getAddress().getStreet());
         brgy.setText(form.getAddress().getBarangay());
         town.setText(form.getAddress().getTown());

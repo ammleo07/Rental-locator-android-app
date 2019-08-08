@@ -30,7 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:layout_marginTop="50dp">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="407dp">
 
         <LinearLayout
             android:id="@+id/user_registration_form_house_owner"
@@ -39,28 +41,27 @@
             android:orientation="vertical">
 
             <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/register_house_house_type"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="House Type"-->
-                    <!--android:imeActionId="11"-->
-                    <!--android:imeActionLabel="House Type"-->
-                    <!--android:imeOptions="actionUnspecified"-->
-                    <!--android:inputType="text"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:singleLine="true" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/register_house_house_type"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="House Type"-->
+            <!--android:imeActionId="11"-->
+            <!--android:imeActionLabel="House Type"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
 
             <!--</android.support.design.widget.TextInputLayout>-->
 
             <Spinner
                 android:id="@+id/houseType_list"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-            />
+                android:layout_height="55dp" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -89,44 +90,51 @@
                     android:id="@+id/register_house_monthly_fee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Monthly Fee"
+                    android:hint="Rental Fee"
                     android:imeActionId="12"
-                    android:imeActionLabel="Monthly Fess"
+                    android:imeActionLabel="Rental Fee"
                     android:imeOptions="actionUnspecified"
                     android:inputType="numberDecimal"
-                    android:text="0"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="0" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <CheckBox android:id="@+id/register_house_is_negotiable"
+            <CheckBox
+                android:id="@+id/register_house_is_negotiable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Is Monthly Fee Negotiable?" />
+                android:text="Is Rental Fee Negotiable?" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!--<EditText-->
-                    <!--android:id="@+id/register_house_number_of_slots"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="Number of Slots"-->
-                    <!--android:imeActionId="13"-->
-                    <!--android:imeActionLabel="Number of Slots"-->
-                    <!--android:imeOptions="actionUnspecified"-->
-                    <!--android:inputType="number"-->
-                    <!--android:text="0"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:singleLine="true" />-->
+                <!--android:id="@+id/register_house_number_of_slots"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Number of Slots"-->
+                <!--android:imeActionId="13"-->
+                <!--android:imeActionLabel="Number of Slots"-->
+                <!--android:imeOptions="actionUnspecified"-->
+                <!--android:inputType="number"-->
+                <!--android:text="0"-->
+                <!--android:maxLines="1"-->
+                <!--android:singleLine="true" />-->
+
+                <Spinner
+                    android:id="@+id/boarderType_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp" />
+
                 <Spinner
                     android:id="@+id/register_house_number_of_slots"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:tooltipText="Select Barangay"
-                    android:layout_below="@id/register_house_address_brgy" />
+                    android:layout_below="@id/register_house_address_brgy"
+                    android:tooltipText="Select Barangay" />
 
 
             </android.support.design.widget.TextInputLayout>
@@ -150,40 +158,39 @@
             </android.support.design.widget.TextInputLayout>
 
             <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/register_house_address_street"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="Street"-->
-                    <!--android:imeActionId="15"-->
-                    <!--android:imeActionLabel="Street"-->
-                    <!--android:imeOptions="actionUnspecified"-->
-                    <!--android:inputType="text"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:singleLine="true" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/register_house_address_street"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Street"-->
+            <!--android:imeActionId="15"-->
+            <!--android:imeActionLabel="Street"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
 
             <!--</android.support.design.widget.TextInputLayout>-->
 
 
-
             <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/register_house_address_brgy"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="Barangay"-->
-                    <!--android:imeActionId="15"-->
-                    <!--android:imeActionLabel="Barangay"-->
-                    <!--android:imeOptions="actionUnspecified"-->
-                    <!--android:inputType="text"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:singleLine="true" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/register_house_address_brgy"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Barangay"-->
+            <!--android:imeActionId="15"-->
+            <!--android:imeActionLabel="Barangay"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
 
             <!--</android.support.design.widget.TextInputLayout>-->
 
@@ -191,15 +198,15 @@
                 android:id="@+id/street_list"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:tooltipText="Select Barangay"
-                android:layout_below="@id/register_house_address_brgy" />
+                android:layout_below="@id/register_house_address_brgy"
+                android:tooltipText="Select Barangay" />
 
             <Spinner
                 android:id="@+id/barangay_list"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:tooltipText="Select Barangay"
-                android:layout_below="@id/street_list" />
+                android:layout_below="@id/street_list"
+                android:tooltipText="Select Barangay" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -209,64 +216,68 @@
                     android:id="@+id/register_house_address_town"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="Town/City"
                     android:imeActionId="16"
                     android:imeActionLabel="Town/City"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text"
-                    android:text="System Generated"
-                    android:enabled="false"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="System Generated" />
 
             </android.support.design.widget.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/register_house_address_latitude"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Latitude"
-                android:imeActionId="16"
-                android:imeActionLabel="Latitude"
-                android:imeOptions="actionUnspecified"
-                android:inputType="text"
-                android:text="0.0"
-                android:enabled="false"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:visibility="gone">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/register_house_address_latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="Latitude"
+                    android:imeActionId="16"
+                    android:imeActionLabel="Latitude"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="0.0"
+                    android:visibility="gone" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/register_house_address_longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="Longitude"
                     android:imeActionId="16"
                     android:imeActionLabel="Longitude"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text"
-                    android:text="0.0"
-                    android:enabled="false"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="0.0"
+                    android:visibility="gone" />
 
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:onClick="viewMap"
                 android:layout_width="250dp"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="viewMap"
                 android:text="Pick location on map" />
 
 

@@ -71,7 +71,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
     public EditText houseName,monthlyFee;
     public EditText town,houseNo;
     public CheckBox isNegotiable;
-    Spinner houseType,street,brgy, noOfSlots;
+    Spinner houseType,street,brgy, noOfSlots,boarderType;
     View formTab1,formTab2,progressBar,appBar;
     ProgressDialog progressDialog;
     public Fragment fragmentTab1, fragmentTab2;
@@ -123,6 +123,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 houseNo = (EditText) findViewById(R.id.register_house_address_number);
                 street = (Spinner) findViewById(R.id.street_list);
                 brgy = (Spinner) findViewById(R.id.barangay_list);
+                boarderType = (Spinner) findViewById(R.id.boarderType_list);
                 town = (EditText) findViewById(R.id.register_house_address_town);
                 EditText latitude = (EditText) findViewById(R.id.register_house_address_latitude);
                 EditText longitude = (EditText) findViewById(R.id.register_house_address_longitude);
@@ -152,6 +153,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 house.setMonthlyFee(Double.parseDouble(monthlyFee.getText().toString()));
                 house.setHouseName(houseName.getText().toString());
                 house.setIsNegotiable(isNegotiable.isChecked() ? "Y": "N");
+                house.setBoarderType(boarderType.getSelectedItem().toString().equalsIgnoreCase("Select Boarder Type") ? "Both" : boarderType.getSelectedItem().toString());
 
                 requiredFields.add(house.getHouseType());
                 requiredFields.add(house.getHouseName());

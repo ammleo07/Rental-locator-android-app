@@ -53,14 +53,14 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         houseType.setText("House Type:" + houseOwnerForm.getHouse().getHouseType());
         housePrice.setText("Monthly Rental: Php "+ Math.round(houseOwnerForm.getHouse().getMonthlyFee()) + "");
         address.setText("Address:"+ houseOwnerForm.getAddress().getFullAddress());
-        latitude.setText("Latitude:" + houseOwnerForm.getAddress().getLatitude() + "");
-        longitude.setText("Longitude:"+houseOwnerForm.getAddress().getLongitude() + "");
-        houseOwner.setText("Owner:"+houseOwnerForm.getUser().getFirstName() + " " + houseOwnerForm.getUser().getLastName());
-        contactNumber.setText("Owner's Contact Number:"+houseOwnerForm.getHouseOwner().getContactNumber());
+        latitude.setText("Latitude: " + houseOwnerForm.getAddress().getLatitude() + "");
+        longitude.setText("Longitude: "+houseOwnerForm.getAddress().getLongitude() + "");
+        houseOwner.setText("Owner: "+houseOwnerForm.getUser().getFirstName() + " " + houseOwnerForm.getUser().getLastName());
+        contactNumber.setText("Owner's Contact Number: "+houseOwnerForm.getHouseOwner().getContactNumber());
         numbertoContact = houseOwnerForm.getHouseOwner().getContactNumber();
         callButton.setText("Call " + houseOwnerForm.getHouseOwner().getContactNumber());
-        isFlood.setText("Is Prone to Flood:" + (houseOwnerForm.getAddress().getIsFlood() == null ? "No" :houseOwnerForm.getAddress().getIsFlood()));
-        isCrime.setText("Is Prone to Crime:" + (houseOwnerForm.getAddress().getIsCrime() == null ? "No" : houseOwnerForm.getAddress().getIsCrime()));
+        isFlood.setText("Is Prone to Flood: " + (houseOwnerForm.getAddress().getIsFlood() == null ? "No" :houseOwnerForm.getAddress().getIsFlood()));
+        isCrime.setText("Is Prone to Crime: " + (houseOwnerForm.getAddress().getIsCrime() == null ? "No" : houseOwnerForm.getAddress().getIsCrime()));
         addressId.setText(houseOwnerForm.getAddress().getId() + "");
 
         //Toast.makeText(getApplicationContext(), "Token:" + FirebaseInstanceId.getInstance().getToken() , Toast.LENGTH_LONG).show();

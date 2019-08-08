@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:layout_marginTop="10dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"/>
 
@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
+        android:textSize="15dp"
         android:textColor="#000"
         android:layout_below="@+id/result_house_name"
         android:layout_alignLeft="@+id/result_house_name"
@@ -33,7 +34,10 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:textColor="#000"
-        android:layout_alignTop="@+id/result_house_type"
+        android:textSize="15dp"
+        android:layout_below="@+id/result_house_boarder_type"
+        android:layout_alignLeft="@+id/result_house_boarder_type"
+        android:layout_alignStart="@+id/result_house_boarder_type"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -42,6 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
+        android:textSize="15dp"
+        android:lines="2"
         android:textColor="#000"
         android:layout_below="@+id/result_house_type"
         android:layout_alignLeft="@+id/result_house_type"
@@ -50,10 +56,24 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:id="@+id/result_house_boarder_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:layout_below="@+id/result_house_address"
+        android:layout_alignLeft="@+id/result_house_address"
+        android:layout_alignStart="@+id/result_house_address"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
         android:id="@+id/result_house_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
+        android:lines="2"
         android:textColor="#000"
         android:visibility="gone"
         android:layout_below="@+id/result_house_type"

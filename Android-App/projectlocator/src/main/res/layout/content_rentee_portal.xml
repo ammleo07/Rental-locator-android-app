@@ -31,7 +31,7 @@
             <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:id="@+id/rentee_profile"
-                android:layout_height="180dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="50dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
@@ -48,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:textSize="18dp"
                     android:textColor="#FFFFFF"/>
 
 
@@ -96,13 +97,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Username" />
+                        android:textSize="16dp"
+                        android:lines="2"
+                        android:text="Username: " />
 
 
                     <TextView
                         android:id="@+id/portal_rentee_username"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:scrollHorizontally="false"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -117,13 +122,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Name" />
+                        android:textSize="16dp"
+                        android:lines="2"
+                        android:text="Name: " />
 
 
                     <TextView
                         android:id="@+id/portal_rentee_fullName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:scrollHorizontally="false"
+                        android:lines="2"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -138,14 +148,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Contact Number" />
+                        android:textSize="16dp"
+                        android:text="Contact Number: " />
 
 
                     <TextView
                         android:id="@+id/portal_rentee_contact_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#0079D6">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:textSize="16dp"
+                        android:textColor="#FFFFFF"
+                        android:text="Preferrences " />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:layout_column="1"
                         />
                 </TableRow>
 
@@ -159,13 +194,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Preferred House Type" />
+                        android:textSize="16dp"
+                        android:text="House Type: " />
 
 
                     <TextView
                         android:id="@+id/portal_rentee_house_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
                         />
                 </TableRow>
@@ -180,13 +217,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:text="Preferred Price Ranges:" />
+                        android:textSize="16dp"
+                        android:text="Price Ranges: " />
 
 
                     <TextView
                         android:id="@+id/portal_rentee_price_range"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16dp"
                         android:layout_column="2"
                         />
                 </TableRow>

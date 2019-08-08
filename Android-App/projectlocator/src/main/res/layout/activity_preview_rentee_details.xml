@@ -22,7 +22,7 @@
          android:fitsSystemWindows. -->
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:layout_marginTop="50dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -39,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="18dp"
                 android:textColor="#FFFFFF"/>
 
 
@@ -52,30 +53,30 @@
         </TableRow>
 
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="2dp"
-            android:background="#0079D6">
+        <!--<TableRow-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:padding="2dp"-->
+            <!--android:background="#0079D6">-->
 
-            <TextView
-                android:text="Fields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"/>
+            <!--<TextView-->
+                <!--android:text="Fields"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_column="1"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#FFFFFF"/>-->
 
 
-            <TextView
-                android:text="Values"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"/>
+            <!--<TextView-->
+                <!--android:text="Values"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_column="2"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#FFFFFF"/>-->
 
-        </TableRow>
+        <!--</TableRow>-->
 
 
         <TableRow
@@ -88,16 +89,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Username"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:text="Username" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_username"
                 android:layout_width="wrap_content"
+                android:textSize="18dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -111,16 +112,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Password"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:text="Password" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -134,16 +135,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Name"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:lines="2"
+                android:text="Name" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:lines="2"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -157,16 +160,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Contact Number"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:text="Contact Number" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_contact_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -175,7 +178,7 @@
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="220dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:stretchColumns="2">
@@ -191,6 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="18dp"
                 android:textColor="#FFFFFF"/>
 
 
@@ -204,30 +208,30 @@
         </TableRow>
 
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="2dp"
-            android:background="#0079D6">
+        <!--<TableRow-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:padding="2dp"-->
+            <!--android:background="#0079D6">-->
 
-            <TextView
-                android:text="Fields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"/>
+            <!--<TextView-->
+                <!--android:text="Fields"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_column="1"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#FFFFFF"/>-->
 
 
-            <TextView
-                android:text="Values"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"/>
+            <!--<TextView-->
+                <!--android:text="Values"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_column="2"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#FFFFFF"/>-->
 
-        </TableRow>
+        <!--</TableRow>-->
 
 
 
@@ -241,16 +245,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="House Type"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:text="House Type" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_house_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -264,16 +268,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Price Range"
-                android:textAlignment="center" />
+                android:textSize="18dp"
+                android:text="Price Range" />
 
 
             <TextView
                 android:id="@+id/preview_rentee_price_range"
                 android:layout_width="wrap_content"
+                android:textSize="18dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 

@@ -35,6 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         holder.housePrice.setText("Monthly Rental : Php " + Math.round(itemList.get(position).getMonthlyFee()));
         holder.houseAddress.setText("Address: " + itemList.get(position).getFullAddress());
         holder.houseId.setText(itemList.get(position).getId() + "");
+        holder.boardertype.setText("Boarder Type[Male/Female]:" + itemList.get(position).getBoarderType());
     }
 
     @Override

@@ -32,7 +32,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder
         implements View.OnClickListener{
 
     public TextView houseId, houseName;
-    public TextView houseType;
+    public TextView houseType, boardertype;
     public TextView housePrice,houseAddress;
 
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
@@ -45,6 +45,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder
         housePrice = (TextView)itemView.findViewById(R.id.result_house_price);
         houseAddress =(TextView)itemView.findViewById(R.id.result_house_address);
         houseId =(TextView)itemView.findViewById(R.id.result_house_id);
+        boardertype=(TextView)itemView.findViewById(R.id.result_house_boarder_type);
 
     }
 

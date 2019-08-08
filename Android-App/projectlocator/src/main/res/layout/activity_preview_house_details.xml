@@ -19,6 +19,7 @@
         android:textSize="50sp"
         android:textStyle="bold" />
 
+
     <!--<ScrollView-->
         <!--android:id="@+id/preview_house_owner_form"-->
         <!--android:layout_width="match_parent"-->
@@ -53,7 +54,7 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:layout_marginTop="30dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -70,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="16dp"
                 android:textColor="#FFFFFF"/>
 
 
@@ -119,16 +121,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Username"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="Username"/>
 
 
             <TextView
                 android:id="@+id/preview_house_owner_username"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
+                android:textSize="16dp"
+                android:lines="2"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                />
         </TableRow>
 
@@ -142,16 +145,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
                 android:text="Password"
-                android:textAlignment="center" />
+             />
 
 
             <TextView
                 android:id="@+id/preview_house_owner_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -165,8 +169,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
                 android:text="Name"
-                android:textAlignment="center" />
+             />
 
 
             <TextView
@@ -174,7 +179,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
+                android:textSize="16dp"
+                android:lines="2"
                 />
         </TableRow>
 
@@ -188,16 +194,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
                 android:text="Contact Number"
-                android:textAlignment="center" />
+             />
 
 
             <TextView
                 android:id="@+id/preview_house_owner_contact_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -207,8 +214,8 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="150dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="170dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:stretchColumns="2">
@@ -224,6 +231,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="16dp"
                 android:textColor="#FFFFFF"/>
 
 
@@ -273,16 +281,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
                 android:text="House Name"
-                android:textAlignment="center" />
+             />
 
 
             <TextView
                 android:id="@+id/preview_house_house_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:lines="2"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -296,8 +306,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
                 android:text="House Type"
-                android:textAlignment="center" />
+             />
 
 
             <TextView
@@ -305,7 +316,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -319,17 +329,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:textSize="16dp"
+                android:text="Boarder Type[M/F]"
+             />
+
+
+            <TextView
+                android:id="@+id/preview_house_boarder_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="16dp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="2dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="16dp"
                 android:text="Monthly Fees"
-                android:textAlignment="center" />
+                />
 
 
             <TextView
                 android:id="@+id/preview_house_monthly_fee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16dp"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
+
         </TableRow>
 
         <TableRow
@@ -342,16 +378,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Number of Slots"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="Number of Slots" />
 
 
             <TextView
                 android:id="@+id/preview_house_number_of_slots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:textAlignment="center"/>
+                android:textSize="18dp"
+                android:layout_column="2" />
+
         </TableRow>
 
     </TableLayout>
@@ -371,8 +408,8 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="243dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="273dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:stretchColumns="2">
@@ -388,6 +425,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="16dp"
                 android:textColor="#FFFFFF"/>
 
 
@@ -395,6 +433,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:textSize="16dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"/>
 
@@ -437,16 +476,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="House Number"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="House Number" />
 
 
             <TextView
                 android:id="@+id/preview_address_house_number"
                 android:layout_width="wrap_content"
+                android:textSize="16dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -460,16 +499,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Street"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="Street" />
 
 
             <TextView
                 android:id="@+id/preview_house_address_street"
                 android:layout_width="wrap_content"
+                android:textSize="16dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -483,16 +522,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Barangay"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="Barangay" />
 
 
             <TextView
                 android:id="@+id/preview_address_brgy"
                 android:layout_width="wrap_content"
+                android:textSize="16dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:textAlignment="center"
                 />
         </TableRow>
 
@@ -506,22 +545,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Town/City"
-                android:textAlignment="center" />
+                android:textSize="16dp"
+                android:text="Town/City" />
 
 
             <TextView
                 android:id="@+id/preview_address_town"
                 android:layout_width="wrap_content"
+                android:textSize="16dp"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:textAlignment="center"/>
+                android:layout_column="2" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:padding="2dp"
+            android:visibility="gone"
             android:background="#FFFFFF">
 
             <TextView
@@ -544,6 +584,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:padding="2dp"
+            android:visibility="gone"
             android:background="#FFFFFF">
 
             <TextView

@@ -170,9 +170,9 @@ public class PreviewRenteeDetailsActivity extends AppCompatActivity {
         username.setText(form.getUser().getUsername());
         password.setText(form.getUser().getPassword());
         name.setText(form.getUser().getFirstName() + " " + form.getUser().getMiddleName() + " " + form.getUser().getLastName());
-        contactNumber.setText(form.getRentee().getContactNumber());
+        contactNumber.setText(": " +form.getRentee().getContactNumber());
         houseType.setText(form.getRentee().getHouseType());
-        priceRange.setText(form.getRentee().getMinPriceRange()  + " to " + form.getRentee().getMaxPriceRange());
+        priceRange.setText(": Php. " + form.getRentee().getMinPriceRange()  + " to Php. " + form.getRentee().getMaxPriceRange());
 
     }
 
