@@ -82,6 +82,10 @@
         <activity
             android:name=".MapTestActivity"
             android:label="@string/title_activity_map_test" />
+        <activity
+            android:name=".MapLocationActivity"
+            android:label="@string/title_activity_map_test" />
+
         <activity android:name=".SearchHouseParamActivity" />
         <activity
             android:name=".SearchResultActivity"

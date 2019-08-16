@@ -141,7 +141,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
     {
         try {
 
-            Intent intent = new Intent(ViewHouseDetailsActivity.this,MapsHouseDirectionActivity.class);
+            Intent intent = new Intent(ViewHouseDetailsActivity.this,MapLocationActivity.class);
+            intent.putExtra("House", houseOwnerForm);
             startActivity(intent);
 
         }
