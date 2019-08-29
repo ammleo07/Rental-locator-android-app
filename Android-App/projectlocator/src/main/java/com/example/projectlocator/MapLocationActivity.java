@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -28,6 +29,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.text.DecimalFormat;
 
 import Model.HouseOwnerForm;
 
@@ -205,8 +208,43 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
 //                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
 //                .build();                   // Creates a CameraPosition from the builder
 //        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        float results[] =new float[19];
+        Location.distanceBetween(latitude,longitude,ownerForm.getAddress().getLatitude(),ownerForm.getAddress().getLongitude(),results);
+        //Location.distanceBetween(latitude,longitude,14.5925,121.0282,results);
+        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\tEstimated taxi fare: " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
 
+    }
 
+    public double computeFare(float distance)
+    {
+        double fare=40.00;
+        fare = fare + (distance * 13.5);
+        return fare;
+    }
+
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
+        int Radius = 6371;// radius of earth in Km
+        double lat1 = StartP.latitude;
+        double lat2 = EndP.latitude;
+        double lon1 = StartP.longitude;
+        double lon2 = EndP.longitude;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult = Radius * c;
+        double km = valueResult / 1;
+        DecimalFormat newFormat = new DecimalFormat("####");
+        int kmInDec = Integer.valueOf(newFormat.format(km));
+        double meter = valueResult % 1000;
+        int meterInDec = Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+                + " Meter   " + meterInDec);
+
+        return Radius * c;
     }
 
     @Override

@@ -42,3 +42,8 @@ https://stackoverflow.com/questions/817396/mysql-timestamp-only-on-create
 https://stackoverflow.com/questions/18962757/when-is-a-timestamp-auto-updated
 https://stackoverflow.com/questions/1337424/android-spinner-get-the-selected-item-change-event
 https://www.oodlestechnologies.com/blogs/How-to-handle-DATETIME-values-with--zero-Timestamp-in-JDBC/
+https://stackoverflow.com/questions/48416842/android-find-distance-and-duration-between-two-points-on-google-map
+https://www.youtube.com/watch?v=FlSup_eelYE
+https://www.youtube.com/watch?v=6vjo3pMXW7I
+https://www.youtube.com/watch?v=pqux6HO613M
+https://www.youtube.com/watch?v=yOudtpXDPzw

@@ -241,30 +241,29 @@ public class SearchHouseParamActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Server:" + ApiUtils.BASE_URL , Toast.LENGTH_LONG).show();
 
         mService= ApiUtils.getSOService();
+        try {
             mService.searchHouse(searchCriteria).enqueue(new Callback<List<House>>() {
 
                 @Override
                 public void onResponse(Call<List<House>> call, Response<List<House>> response) {
-
-                    if(response.isSuccessful()) {
-                        if(response.body() != null)
-                        {
+                    Toast.makeText(getApplicationContext(), "response code:"+response.code(), Toast.LENGTH_LONG).show();
+                    if (response.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_LONG).show();
+                        if (response.body() != null) {
 //                            Intent intent = new Intent(SearchHouseParamActivity.this,SearchResultActivity.class);
-                            Intent intent = new Intent(SearchHouseParamActivity.this,SearchResult2Activity.class);
+                            Intent intent = new Intent(SearchHouseParamActivity.this, SearchResult2Activity.class);
                             //intent.putExtra("Houses", houses);
                             intent.putExtra("Houses", (Serializable) response.body());
                             startActivity(intent);
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Error has been occured on the server" , Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error has been occured on the server", Toast.LENGTH_LONG).show();
 
                         }
 
-                    }else {
-                        int statusCode  = response.code();
+                    } else {
+                        int statusCode = response.code();
                         //response.errorBody().toString();
-                        Toast.makeText(getApplicationContext(), "Error has been occured on the server:" + statusCode + ":" + response.errorBody().toString() , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error has been occured on the server:" + statusCode + ":" + response.errorBody().toString(), Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -273,6 +272,11 @@ public class SearchHouseParamActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Error to access the server:" + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
     }
 

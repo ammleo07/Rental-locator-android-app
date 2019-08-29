@@ -59,7 +59,7 @@ public interface RetrofitService {
     @GET("client/house/address/barangay")
     Call<List<String>> getBarangay(@Query("city") String city);
 
-    @POST("/client/search/house")
+    @POST("client/search/house")
     Call<List<House>> searchHouse(@Body SearchCriteria searchCriteria);
 
 
