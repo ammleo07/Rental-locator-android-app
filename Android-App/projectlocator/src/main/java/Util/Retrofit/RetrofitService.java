@@ -2,6 +2,7 @@ package Util.Retrofit;
 
 import java.util.List;
 
+import Model.Comment;
 import Model.CostEstimates;
 import Model.House;
 import Model.HouseOwnerForm;
@@ -74,4 +75,10 @@ public interface RetrofitService {
 
     @POST("client/register/user/rentee")
     Call<String> saveUser(@Body RenteeForm rentee);
+
+    @GET("client/comment/owner")
+    Call<List<Comment>> viewCommentsByOwner(@Query("owner") String owner);
+
+    @POST("client/comment/save")
+    Call<String> saveComment(@Body Comment comment);
 }

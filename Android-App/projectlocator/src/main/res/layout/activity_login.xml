@@ -22,12 +22,12 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:onClick="changeServer"
         android:clickable="true"
-        app:srcCompat="@mipmap/locator"
-        tools:srcCompat="@mipmap/locator" />
+        app:srcCompat="@mipmap/balangay"
+        tools:srcCompat="@mipmap/balangay" />
 
 
     <ScrollView

@@ -60,7 +60,7 @@ public class RecyclerViewAdapterTransactions extends RecyclerView.Adapter<Recycl
             }
         }
 
-        if(itemList.get(position).getStatus().matches("Confirmed|Rejected"))
+        if(itemList.get(position).getStatus().matches("Confirmed|Rejected|Sold"))
             holder.transactionacceptButton.setEnabled(false);
     }
 

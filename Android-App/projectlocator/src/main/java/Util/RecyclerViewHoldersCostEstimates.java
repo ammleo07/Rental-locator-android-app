@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class RecyclerViewHoldersCostEstimates extends RecyclerView.ViewHolder
         implements View.OnClickListener{
 
     public TextView routeName,commuteAndCost;
+    public RatingBar houseRating;
 
 
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
@@ -31,7 +33,7 @@ public class RecyclerViewHoldersCostEstimates extends RecyclerView.ViewHolder
         itemView.setOnClickListener(this);
         routeName = itemView.findViewById(R.id.route_name);
         commuteAndCost = itemView.findViewById(R.id.commute_cost);
-
+        houseRating = itemView.findViewById(R.id.houseRating);
     }
 
 

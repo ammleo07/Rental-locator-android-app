@@ -238,7 +238,7 @@ public class SearchHouseParamActivity extends AppCompatActivity {
             RetrofitService mService;
             SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
             ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
-            Toast.makeText(getApplicationContext(), "Server:" + ApiUtils.BASE_URL , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Server:" + ApiUtils.BASE_URL , Toast.LENGTH_LONG).show();
 
         mService= ApiUtils.getSOService();
         try {
@@ -246,9 +246,9 @@ public class SearchHouseParamActivity extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call<List<House>> call, Response<List<House>> response) {
-                    Toast.makeText(getApplicationContext(), "response code:"+response.code(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "response code:"+response.code(), Toast.LENGTH_LONG).show();
                     if (response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_LONG).show();
                         if (response.body() != null) {
 //                            Intent intent = new Intent(SearchHouseParamActivity.this,SearchResultActivity.class);
                             Intent intent = new Intent(SearchHouseParamActivity.this, SearchResult2Activity.class);

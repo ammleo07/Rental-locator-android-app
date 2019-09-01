@@ -211,7 +211,7 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
         float results[] =new float[19];
         Location.distanceBetween(latitude,longitude,ownerForm.getAddress().getLatitude(),ownerForm.getAddress().getLongitude(),results);
         //Location.distanceBetween(latitude,longitude,14.5925,121.0282,results);
-        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\tEstimated taxi fare: " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\nEstimated taxi fare: " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
 
     }
 

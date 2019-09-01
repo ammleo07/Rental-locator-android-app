@@ -10,15 +10,16 @@ import com.example.projectlocator.R;
 
 import java.util.List;
 
+import Model.Comment;
 import Model.CostEstimates;
 import Model.Transaction;
 
 public class RecyclerViewAdapterCostEstimates extends RecyclerView.Adapter<RecyclerViewHoldersCostEstimates>{
 
-    private List<CostEstimates> itemList;
+    private List<Comment> itemList;
     private Context context;
 
-    public RecyclerViewAdapterCostEstimates(Context context, List<CostEstimates> itemList) {
+    public RecyclerViewAdapterCostEstimates(Context context, List<Comment> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -32,8 +33,10 @@ public class RecyclerViewAdapterCostEstimates extends RecyclerView.Adapter<Recyc
 
     @Override
     public void onBindViewHolder(RecyclerViewHoldersCostEstimates holder, int position) {
-        holder.routeName.setText("Route: " + itemList.get(position).getRoutes() + "");
-        holder.commuteAndCost.setText("Commutes and Cost: " + itemList.get(position).getCost() + "");
+        holder.routeName.setText("Customer: " + itemList.get(position).getRentee() + "");
+        holder.commuteAndCost.setText("Comments: " + itemList.get(position).getComment() + "");
+        holder.houseRating.setEnabled(false);
+        holder.houseRating.setRating(Float.parseFloat(itemList.get(position).getRate().toString()));
     }
 
     @Override

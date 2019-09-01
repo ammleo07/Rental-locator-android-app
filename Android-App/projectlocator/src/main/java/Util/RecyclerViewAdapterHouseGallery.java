@@ -38,24 +38,40 @@ public class RecyclerViewAdapterHouseGallery extends RecyclerView.Adapter<Recycl
         //holder.houseId.setText(itemList.get(position).getId() + "");
         //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").resize(200,250).into(holder.houseImage);
         //Picasso.with(context).load("http://192.168.1.11:8080/resources/images/ama.png").into(holder.houseImage);
-        Log.i("path","http://192.168.1.11:8080" + itemList.get(position));
-        SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        //Log.i("path","http://192.168.1.11:8080" + itemList.get(position));
+        final SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
         //Picasso.with(context).load("http://192.168.1.11:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
-        Picasso.with(context).load("http://" + sharedpreferences.getString("SERVER",null) + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
-                             .resize(450,600)
-                             .centerCrop()
-                             .into(holder.houseImage, new Callback() {
-                                 @Override
-                                 public void onSuccess() {
-                                     holder.progressBar.setVisibility(View.GONE);
-                                 }
-
-                                 @Override
-                                 public void onError() {
-
-                                 }
-                             });
+        Log.i("Server Path:","http://" + sharedpreferences.getString("SERVER",null));
+//        Picasso.with(context).load("http://" + sharedpreferences.getString("SERVER",null) + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
+//                             .resize(450,600)
+//                             .centerCrop()
+//                             .into(holder.houseImage, new Callback() {
+//                                 @Override
+//                                 public void onSuccess() {
+//                                     holder.progressBar.setVisibility(View.GONE);
+//                                 }
+//
+//                                 @Override
+//                                 public void onError() {
+//                                     Log.i("Error on picasso:","http://" + sharedpreferences.getString("SERVER",null));
+//                                 }
+//                             });
         //Picasso.with(context).load("http://192.168.0.137:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
+        Picasso.with(context).load("http://balangay.site:8080/usr/local/images"  + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
+                .resize(450,600)
+                .centerCrop()
+                .into(holder.houseImage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        holder.progressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError() {
+                        Log.i("Error on picasso:","http://" + sharedpreferences.getString("SERVER",null));
+                    }
+                });
+
     }
 
     @Override

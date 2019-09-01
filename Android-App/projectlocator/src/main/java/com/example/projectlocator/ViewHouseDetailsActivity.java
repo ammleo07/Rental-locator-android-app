@@ -51,7 +51,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "Name:" + houseOwnerForm.getHouse().getHouseName() , Toast.LENGTH_LONG).show();
         houseName.setText("House Name:" + houseOwnerForm.getHouse().getHouseName());
         houseType.setText("House Type:" + houseOwnerForm.getHouse().getHouseType());
-        housePrice.setText("Monthly Rental: Php "+ Math.round(houseOwnerForm.getHouse().getMonthlyFee()) + "");
+        housePrice.setText("Monthly Rental: Php "+ Math.round(houseOwnerForm.getHouse().getMonthlyFee()) + " Negotiable?:"
+                + (houseOwnerForm.getHouse().getIsNegotiable().equalsIgnoreCase("Y") ? "Yes" : "No"));
         address.setText("Address:"+ houseOwnerForm.getAddress().getFullAddress());
         latitude.setText("Latitude: " + houseOwnerForm.getAddress().getLatitude() + "");
         longitude.setText("Longitude: "+houseOwnerForm.getAddress().getLongitude() + "");
@@ -177,7 +178,7 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         try {
 
             Intent intent = new Intent(ViewHouseDetailsActivity.this, ViewCostEstimatesActivity.class);
-            intent.putExtra("addressId", houseOwnerForm.getAddress().getId() + "");
+            intent.putExtra("username", houseOwnerForm.getUser().getUsername() + "");
             startActivity(intent);
 
         }

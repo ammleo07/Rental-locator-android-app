@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import Model.Comment;
 import Model.CostEstimates;
 import Util.RecyclerViewAdapterCostEstimates;
 import Util.Retrofit.ApiUtils;
@@ -35,46 +36,81 @@ public class ViewCostEstimatesActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(ViewCostEstimatesActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        String addressId = (getIntent().getStringExtra("addressId"));
-        getCostEstimates(addressId);
+        String owner = (getIntent().getStringExtra("username"));
+        getCommentsByOwner(owner);
 
     }
 
-    public void getCostEstimates(String addressId)
-    {
-        RetrofitService mService;
-        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
-        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
-        mService= ApiUtils.getSOService();
-        mService.viewCostEstimates((addressId)).enqueue(new Callback<List<CostEstimates>>() {
+//    public void getCostEstimates(String addressId)
+//    {
+//        RetrofitService mService;
+//        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+//        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+//        mService= ApiUtils.getSOService();
+//        mService.viewCostEstimates((addressId)).enqueue(new Callback<List<CostEstimates>>() {
+//
+//            @Override
+//            public void onResponse(Call<List<CostEstimates>> call, Response<List<CostEstimates>> response) {
+//
+//                if(response.isSuccessful()) {
+//                    if(response.body() != null)
+//                    {
+//                        adapter = new RecyclerViewAdapterCostEstimates(ViewCostEstimatesActivity.this, response.body());
+//                        recyclerView.setAdapter(adapter);
+//                    }
+//                    else
+//                    {
+//                        Toast.makeText(getApplicationContext(), "Error has been occured on the server" , Toast.LENGTH_LONG).show();
+//
+//                    }
+//
+//                }else {
+//                    int statusCode  = response.code();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<CostEstimates>> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//    }
+public void getCommentsByOwner(String owner)
+{
+    RetrofitService mService;
+    SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+    ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+    mService= ApiUtils.getSOService();
+    mService.viewCommentsByOwner((owner)).enqueue(new Callback<List<Comment>>() {
 
-            @Override
-            public void onResponse(Call<List<CostEstimates>> call, Response<List<CostEstimates>> response) {
+        @Override
+        public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
 
-                if(response.isSuccessful()) {
-                    if(response.body() != null)
-                    {
-                        adapter = new RecyclerViewAdapterCostEstimates(ViewCostEstimatesActivity.this, response.body());
-                        recyclerView.setAdapter(adapter);
-                    }
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Error has been occured on the server" , Toast.LENGTH_LONG).show();
-
-                    }
-
-                }else {
-                    int statusCode  = response.code();
+            if(response.isSuccessful()) {
+                if(response.body() != null)
+                {
+                    adapter = new RecyclerViewAdapterCostEstimates(ViewCostEstimatesActivity.this, response.body());
+                    recyclerView.setAdapter(adapter);
                 }
-            }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Error has been occured on the server" , Toast.LENGTH_LONG).show();
 
-            @Override
-            public void onFailure(Call<List<CostEstimates>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                }
 
-    }
+            }else {
+                int statusCode  = response.code();
+            }
+        }
+
+        @Override
+        public void onFailure(Call<List<Comment>> call, Throwable t) {
+            Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    });
+
+}
 
     @Override
     public void onBackPressed() {

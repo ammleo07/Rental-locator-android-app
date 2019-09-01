@@ -1,18 +1,25 @@
 package Util;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectlocator.R;
 import com.example.projectlocator.ViewHouseDetailsActivity;
 
+import Model.Comment;
 import Model.HouseOwnerForm;
 import Model.Transaction;
 import Util.Retrofit.ApiUtils;
@@ -47,11 +54,14 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
 
         transactionacceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
                 SharedPreferences sharedpreferences =v.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
                 if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee")) {
                     //Toast.makeText(itemView.getContext(), "Accept Rentee.." , Toast.LENGTH_LONG).show();
-                    setStatus(v, "Sold");
-                    transactionacceptButton.setEnabled(false);
+
+                    submitComment(v);
+
                 }
                 else
                 {
@@ -169,6 +179,95 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
 
 
 
+    public void submitComment(final View v)
+    {
+
+        LinearLayout layout = new LinearLayout(v.getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setMinimumWidth(100);
+        layout.setMinimumWidth(100);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setTitle("Send Feedback to Owner");
+
+        final EditText input = new EditText(v.getContext());
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setHint("Your Comment");
+        input.setMaxLines(5);
+        layout.addView(input);
+
+        final RatingBar rate = new RatingBar(v.getContext());
+        rate.setNumStars(5);
+        rate.setMax(5);
+        layout.addView(rate);
+
+        builder.setView(layout);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //m_Text = input.getText().toString();
+                Comment comment = new Comment();
+                comment.setComment(input.getText().toString());
+                comment.setHouseOwner(transactionOwnerName.getText().toString().split(":")[1]);
+                comment.setRentee(transactionRenteeName.getText().toString().split(":")[1]);
+                comment.setTransactionId(Integer.parseInt(transactionId.getText().toString()));
+                comment.setRate(Double.parseDouble(rate.getRating()+""));
+                saveComment(v,comment);
+                setStatus(v, "Sold");
+                transactionacceptButton.setEnabled(false);
+                //Toast.makeText(v.getContext(), "comment:" + input.getText() + " Rate:" + rate.getRating() , Toast.LENGTH_LONG).show();
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public void saveComment(final View v,Comment comment)
+    {
+        try {
+
+            SharedPreferences sharedpreferences =v.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+            String username=sharedpreferences.getString("username",null);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+            RetrofitService mService= ApiUtils.getSOService();
+            mService.saveComment(comment).enqueue(new Callback<String>() {
+
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                    if(response.isSuccessful())
+                    {
+
+                    }
+                    else
+                    {
+                        Toast.makeText(v.getContext(), "There is error on saving comment", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(v.getContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(v.getContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
+        }
+
+    }
     @Override
     public void onClick(final View view) {
 
@@ -176,7 +275,6 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
         {
 
         }
-
 //
 //        RetrofitService mService;
 //        mService= ApiUtils.getSOService();

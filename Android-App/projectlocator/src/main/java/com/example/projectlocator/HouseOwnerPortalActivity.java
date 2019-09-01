@@ -51,11 +51,13 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
         progressBar = findViewById(R.id.house_owner_portal_progress);
         getUserProfile(username);
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -94,7 +96,10 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
                         numberOfSlots.setText(response.body().getHouse().getNumberOfSlots() + "");
                         address.setText(response.body().getAddress().getFullAddress());
                         houseName.setText(response.body().getHouse().getHouseName());
-
+                        TextView ownerName = (TextView) findViewById(R.id.owner_name);
+                        TextView ownerUsername = (TextView) findViewById(R.id.owner_username);
+                        ownerName.setText(fullName.getText().toString());
+                        ownerUsername.setText(username.getText().toString());
                         ownerForm = response.body();
                     }
                     else
@@ -158,6 +163,11 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            sharedpreferences.edit().clear();
+            sharedpreferences.edit().commit();
+            finish();
+
             return true;
         }
 

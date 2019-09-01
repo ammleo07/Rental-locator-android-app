@@ -93,7 +93,10 @@ public class RenteePortalActivity extends AppCompatActivity
                         houseType.setText(response.body().getRentee().getHouseType());
                         contactNumber.setText(response.body().getRentee().getContactNumber());
                         priceRange.setText("Php " +Math.round(response.body().getRentee().getMinPriceRange()) + " - Php " + Math.round(response.body().getRentee().getMaxPriceRange()));
-
+                        TextView renteeName = (TextView) findViewById(R.id.rentee_name);
+                        TextView renteeUsername = (TextView) findViewById(R.id.rentee_username);
+                        renteeName.setText(fullName.getText().toString());
+                        renteeUsername.setText(username.getText().toString());
                         renteeForm = response.body();
                     }
                     else
@@ -217,6 +220,10 @@ public class RenteePortalActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            sharedpreferences.edit().clear();
+            sharedpreferences.edit().commit();
+            finish();
             return true;
         }
 
