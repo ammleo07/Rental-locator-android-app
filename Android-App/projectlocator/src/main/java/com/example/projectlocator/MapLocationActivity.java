@@ -211,14 +211,14 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
         float results[] =new float[19];
         Location.distanceBetween(latitude,longitude,ownerForm.getAddress().getLatitude(),ownerForm.getAddress().getLongitude(),results);
         //Location.distanceBetween(latitude,longitude,14.5925,121.0282,results);
-        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\nEstimated taxi fare: " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\nEstimated taxi fare: PHP. " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
 
     }
 
     public double computeFare(float distance)
     {
         double fare=40.00;
-        fare = fare + (distance * 13.5);
+        fare = fare + (Math.floor(distance) * 13.5);
         return fare;
     }
 

@@ -45,25 +45,31 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <EditText
+        <!--<EditText-->
+            <!--android:id="@+id/edit_house_owner_house_type"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="House Type"-->
+            <!--android:imeActionId="5"-->
+            <!--android:imeActionLabel="House Type"-->
+            <!--android:imeOptions="actionUnspecified"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:singleLine="true" />-->
+
+    <!--</android.support.design.widget.TextInputLayout>-->
+
+        <Spinner
             android:id="@+id/edit_house_owner_house_type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="House Type"
-            android:imeActionId="5"
-            android:imeActionLabel="House Type"
-            android:imeOptions="actionUnspecified"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_height="55dp" />
 
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -98,6 +104,17 @@
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/edit_house_owner_boarder_type"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+        <CheckBox
+            android:id="@+id/edit_house_owner_is_negotiable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is Rental Fee Negotiable?" />
 
         <Button
             android:layout_width="250dp"

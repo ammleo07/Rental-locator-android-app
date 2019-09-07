@@ -8,12 +8,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.List;
 
 import Model.Rentee;
 import Model.RenteeForm;
@@ -27,6 +32,7 @@ import retrofit2.Response;
 public class EditRenteeDetailsActivity extends AppCompatActivity {
 
     RenteeForm renteeForm;
+    Spinner houseType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,8 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         EditText middleName = (EditText) findViewById(R.id.edit_rentee_middle_name);
         EditText lastName = (EditText) findViewById(R.id.edit_rentee_last_name);
         EditText contactNumber = (EditText) findViewById(R.id.edit_rentee_contact_number);
-        EditText houseType = (EditText) findViewById(R.id.edit_rentee_house_type);
+        //EditText houseType = (EditText) findViewById(R.id.edit_rentee_house_type);
+        getHouseTypes();
         EditText minPrice = (EditText) findViewById(R.id.edit_rentee_min_price);
         EditText maxPrice = (EditText) findViewById(R.id.edit_rentee_max_price);
         EditText userId = (EditText) findViewById(R.id.edit_rentee_user_id);
@@ -65,7 +72,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         middleName.setText(renteeForm.getUser().getMiddleName());
         lastName.setText(renteeForm.getUser().getLastName());
         contactNumber.setText(renteeForm.getRentee().getContactNumber());
-        houseType.setText(renteeForm.getRentee().getHouseType() + "");
+        //(renteeForm.getRentee().getHouseType() + "");
         minPrice.setText(renteeForm.getRentee().getMinPriceRange() + "");
         maxPrice.setText(renteeForm.getRentee().getMaxPriceRange() + "");
         userId.setText(renteeForm.getUser().getId() + "");
@@ -81,7 +88,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         EditText middleName = (EditText) findViewById(R.id.edit_rentee_middle_name);
         EditText lastName = (EditText) findViewById(R.id.edit_rentee_last_name);
         EditText contactNumber = (EditText) findViewById(R.id.edit_rentee_contact_number);
-        EditText houseType = (EditText) findViewById(R.id.edit_rentee_house_type);
+        Spinner houseType = (Spinner) findViewById(R.id.edit_rentee_house_type);
         EditText minPrice = (EditText) findViewById(R.id.edit_rentee_min_price);
         EditText maxPrice = (EditText) findViewById(R.id.edit_rentee_max_price);
         EditText userId = (EditText) findViewById(R.id.edit_rentee_user_id);
@@ -101,7 +108,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         Rentee rentee = new Rentee();
         rentee.setId(Integer.parseInt(renteeId.getText().toString()));
         rentee.setUsername(username.getText().toString());
-        rentee.setHouseType(houseType.getText().toString());
+        rentee.setHouseType(houseType.getSelectedItem().toString());
         rentee.setContactNumber(contactNumber.getText().toString());
         rentee.setMinPriceRange(Double.parseDouble(minPrice.getText().toString()));
         rentee.setMaxPriceRange(Double.parseDouble(maxPrice.getText().toString()));
@@ -158,4 +165,47 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         });
 
     }
+
+    public void getHouseTypes() {
+        final Spinner houseType = (Spinner) findViewById(R.id.edit_rentee_house_type);
+        RetrofitService mService;
+        SharedPreferences sharedpreferences =getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+        mService= ApiUtils.getSOService();
+        mService.getHouseTypes().enqueue(new Callback<List<String>>() {
+
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+
+                if(response.isSuccessful()) {
+                    if(response.body() != null)
+                    {
+                        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item,response.body());
+                        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+                        houseType.setAdapter(spinnerArrayAdapter);
+                        houseType.setSelection(spinnerArrayAdapter.getPosition(renteeForm.getRentee().getHouseType()));
+
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Please contact system administrator" , Toast.LENGTH_LONG).show();
+                    }
+                    Log.d("validate username", "username");
+                }else {
+                    int statusCode  = response.code();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+
+                Log.d("validate username", "error loading from API:" + t.getMessage());
+                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
 }

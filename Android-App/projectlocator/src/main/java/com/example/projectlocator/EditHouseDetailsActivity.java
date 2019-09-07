@@ -8,13 +8,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 import Model.House;
 import Model.HouseOwnerForm;
 import Util.Retrofit.ApiUtils;
+import Util.Retrofit.RetrofitService;
 import Util.Retrofit.RetrofitServiceHouseOwner;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +31,7 @@ import retrofit2.Response;
 public class EditHouseDetailsActivity extends AppCompatActivity {
 
     HouseOwnerForm ownerForm;
+    Spinner houseType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +54,28 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
     public void populateData()
     {
         EditText houseName = (EditText) findViewById(R.id.edit_house_owner_house_name);
-        EditText houseType = (EditText) findViewById(R.id.edit_house_owner_house_type);
+        //EditText houseType = (EditText) findViewById(R.id.edit_house_owner_house_type);
         EditText monthlyFee = (EditText) findViewById(R.id.edit_house_owner_month_fees);
         EditText numberOfSlots = (EditText) findViewById(R.id.edit_house_owner_number_of_slots);
         EditText houseId = (EditText) findViewById(R.id.edit_house_owner_house_id);
+        CheckBox isNegotiable = (CheckBox) findViewById(R.id.edit_house_owner_is_negotiable);
+        final Spinner boarderType = (Spinner) findViewById(R.id.edit_house_owner_boarder_type);
+        String[] boarderType_list = {"Select Boarder Type", "Male", "Female", "Both"};
+        final ArrayAdapter<String> spinnerArrayAdapterboarderType_list = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item, Arrays.asList(boarderType_list));
+        spinnerArrayAdapterboarderType_list.setDropDownViewResource(R.layout.spinner_item);
+        boarderType.setAdapter(spinnerArrayAdapterboarderType_list);
 
         houseId.setText(ownerForm.getHouse().getId() + "");
         houseName.setText(ownerForm.getHouse().getHouseName());
-        houseType.setText(ownerForm.getHouse().getHouseType() + "");
+       //houseType.setText(ownerForm.getHouse().getHouseType() + "");
+        getHouseTypes();
         monthlyFee.setText(ownerForm.getHouse().getMonthlyFee() + "");
         numberOfSlots.setText(ownerForm.getHouse().getNumberOfSlots() + "");
-
+        boarderType.setSelection(spinnerArrayAdapterboarderType_list.getPosition(ownerForm.getHouse().getBoarderType()));
+        if(ownerForm.getHouse().getIsNegotiable().equalsIgnoreCase("Y"))
+            isNegotiable.setChecked(true);
+        else
+            isNegotiable.setChecked(false);
     }
 
     public void back(View view)
@@ -78,19 +98,23 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
     public void saveBtn(View view)
     {
         EditText houseName = (EditText) findViewById(R.id.edit_house_owner_house_name);
-        EditText houseType = (EditText) findViewById(R.id.edit_house_owner_house_type);
+        Spinner house_Type = (Spinner) findViewById(R.id.edit_house_owner_house_type);
         EditText monthlyFee = (EditText) findViewById(R.id.edit_house_owner_month_fees);
         EditText numberOfSlots = (EditText) findViewById(R.id.edit_house_owner_number_of_slots);
         EditText houseId = (EditText) findViewById(R.id.edit_house_owner_house_id);
+        final Spinner boarderType = (Spinner) findViewById(R.id.edit_house_owner_boarder_type);
+        CheckBox isNegotiable = (CheckBox) findViewById(R.id.edit_house_owner_is_negotiable);
+
 
         House house = new House();
         house.setOwnerId(ownerForm.getHouse().getOwnerId());
         house.setId(Integer.parseInt(houseId.getText().toString()));
         house.setHouseName(houseName.getText().toString());
-        house.setHouseType(houseType.getText().toString());
+        house.setHouseType(house_Type.getSelectedItem().toString());
         house.setNumberOfSlots(Integer.parseInt(numberOfSlots.getText().toString()));
         house.setMonthlyFee(Double.parseDouble(monthlyFee.getText().toString()));
-
+        house.setBoarderType(boarderType.getSelectedItem().toString());
+        house.setIsNegotiable(isNegotiable.isChecked() ? "Y" : "N");
         HouseOwnerForm form = new HouseOwnerForm();
         form.setHouse(house);
         save(form);
@@ -130,6 +154,48 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<HouseOwnerForm> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    public void getHouseTypes() {
+        final Spinner houseType = (Spinner) findViewById(R.id.edit_house_owner_house_type);
+        RetrofitService mService;
+        SharedPreferences sharedpreferences =getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+        mService= ApiUtils.getSOService();
+        mService.getHouseTypes().enqueue(new Callback<List<String>>() {
+
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+
+                if(response.isSuccessful()) {
+                    if(response.body() != null)
+                    {
+                        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item,response.body());
+                        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+                        houseType.setAdapter(spinnerArrayAdapter);
+                        houseType.setSelection(spinnerArrayAdapter.getPosition(ownerForm.getHouse().getHouseType()));
+
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Please contact system administrator" , Toast.LENGTH_LONG).show();
+                    }
+                    Log.d("validate username", "username");
+                }else {
+                    int statusCode  = response.code();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+
+                Log.d("validate username", "error loading from API:" + t.getMessage());
                 Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
