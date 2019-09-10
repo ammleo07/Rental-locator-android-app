@@ -39,8 +39,14 @@ public class Tab2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_registration_rentee_tab2, container, false);
-
+        final Spinner renteeType = (Spinner) rootView.findViewById(R.id.rentee_type);
         getHouseTypes(rootView);
+
+        String[] initialType = {"Select Type", "Student", "Worker", "Businessman"};
+        final ArrayAdapter<String> spinnerArrayAdapterRenteeType = new ArrayAdapter<String>(rootView.getContext(),R.layout.spinner_item, Arrays.asList(initialType));
+        spinnerArrayAdapterRenteeType.setDropDownViewResource(R.layout.spinner_item);
+        renteeType.setAdapter(spinnerArrayAdapterRenteeType);
+
 
         return rootView;
     }

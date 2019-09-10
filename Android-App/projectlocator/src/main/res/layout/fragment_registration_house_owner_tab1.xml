@@ -36,9 +36,9 @@
                     android:id="@+id/register_house_owner_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Username"
+                    android:hint="Enter Email"
                     android:imeActionId="5"
-                    android:imeActionLabel="Username"
+                    android:imeActionLabel="Email"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text"
                     android:maxLines="1"
@@ -65,25 +65,25 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <EditText
-                    android:id="@+id/register_userType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="User Type"
-                    android:imeActionId="9"
-                    android:imeActionLabel="Password"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="House Owner"
-                    android:enabled="false"
-                    android:singleLine="true" />
+                <!--<EditText-->
+                    <!--android:id="@+id/register_userType"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="User Type"-->
+                    <!--android:imeActionId="9"-->
+                    <!--android:imeActionLabel="Password"-->
+                    <!--android:imeOptions="actionUnspecified"-->
+                    <!--android:inputType="text"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="House Owner"-->
+                    <!--android:enabled="false"-->
+                    <!--android:singleLine="true" />-->
 
-            </android.support.design.widget.TextInputLayout>
+            <!--</android.support.design.widget.TextInputLayout>-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -155,6 +155,8 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
+
+
 
 
 

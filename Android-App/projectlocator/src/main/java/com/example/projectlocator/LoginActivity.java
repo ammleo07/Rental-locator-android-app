@@ -172,6 +172,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             public void onClick(DialogInterface arg0, int arg1) {
                                 //Toast.makeText(LoginActivity.this,"You clicked yes button",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, RegistrationRenteeActivity.class);
+                                //Intent intent = new Intent(LoginActivity.this, UploadDocumentsHouseOwner.class);
                                 startActivity(intent);
                             }
                         });
@@ -180,6 +181,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationHouseOwnerActivity.class);
+                //Intent intent = new Intent(LoginActivity.this, UploadDocumentsHouseOwner.class);
                 startActivity(intent);
             }
         });

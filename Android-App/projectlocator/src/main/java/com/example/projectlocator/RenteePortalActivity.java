@@ -88,6 +88,8 @@ public class RenteePortalActivity extends AppCompatActivity
                         TextView houseType = (TextView) findViewById(R.id.portal_rentee_house_type);
                         TextView contactNumber = (TextView) findViewById(R.id.portal_rentee_contact_number);
                         TextView priceRange = (TextView) findViewById(R.id.portal_rentee_price_range);
+                        TextView type = (TextView) findViewById(R.id.portal_rentee_type);
+                        TextView fundType = (TextView) findViewById(R.id.portal_rentee_fund_type);
                         username.setText(response.body().getRentee().getUsername());
                         fullName.setText(response.body().getUser().getFirstName() + " " + response.body().getUser().getMiddleName() + " " + response.body().getUser().getLastName());
                         houseType.setText(response.body().getRentee().getHouseType());
@@ -97,6 +99,8 @@ public class RenteePortalActivity extends AppCompatActivity
                         TextView renteeUsername = (TextView) findViewById(R.id.rentee_username);
                         renteeName.setText(fullName.getText().toString());
                         renteeUsername.setText(username.getText().toString());
+                        type.setText(response.body().getRentee().getRenteeType());
+                        fundType.setText(response.body().getRentee().getFundType());
                         renteeForm = response.body();
                     }
                     else

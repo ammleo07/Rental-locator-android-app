@@ -4,8 +4,11 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -68,7 +71,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     Button btnPickImage;
     public EditText houseOwnerUsername, houseOwnerPassword,houseOwnerFirstName,houseOwnerMiddleName,houseOwnerLastName,houseOwnerContactNumber;
-    public EditText houseName,monthlyFee;
+    public EditText houseName,monthlyFee,description;
     public EditText town,houseNo;
     public CheckBox isNegotiable;
     Spinner houseType,street,brgy, noOfSlots,boarderType;
@@ -127,6 +130,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 town = (EditText) findViewById(R.id.register_house_address_town);
                 EditText latitude = (EditText) findViewById(R.id.register_house_address_latitude);
                 EditText longitude = (EditText) findViewById(R.id.register_house_address_longitude);
+                description = (EditText) findViewById(R.id.register_house_house_description);
                 List<String> requiredFields = new ArrayList<>();
 
                 User user = new User();
@@ -154,7 +158,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 house.setHouseName(houseName.getText().toString());
                 house.setIsNegotiable(isNegotiable.isChecked() ? "Y": "N");
                 house.setBoarderType(boarderType.getSelectedItem().toString().equalsIgnoreCase("Select Boarder Type") ? "Both" : boarderType.getSelectedItem().toString());
-
+                house.setDescription(description.getText().toString());
                 requiredFields.add(house.getHouseType());
                 requiredFields.add(house.getHouseName());
                 requiredFields.add(house.getNumberOfSlots() + "");
@@ -184,13 +188,19 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                     houseOwnerForm.setHouseOwner(houseOwner);
                     houseOwnerForm.setHouse(house);
                     houseOwnerForm.setAddress(address);
-                    Intent intent = new Intent(RegistrationHouseOwnerActivity.this, PreviewHouseDetailsActivity.class);
-                    intent.putExtra("User", houseOwnerForm);
-                    startActivity(intent);
+                    if(houseOwnerForm.getHouse().getMonthlyFee() > 0) {
+                        Intent intent = new Intent(RegistrationHouseOwnerActivity.this, PreviewHouseDetailsActivity.class);
+                        intent.putExtra("User", houseOwnerForm);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Rental Fee must not be 0" , Toast.LENGTH_LONG).show();
+                    }
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(), "Please complete all required fields" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please complete all required fields. Note: All number type must not be 0" , Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -238,6 +248,7 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
                 {
 
                 }
+
             }
         }
     }
@@ -256,6 +267,10 @@ public class RegistrationHouseOwnerActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_registration_house_owner, menu);
         return true;
     }
+
+
+
+
 
 
 

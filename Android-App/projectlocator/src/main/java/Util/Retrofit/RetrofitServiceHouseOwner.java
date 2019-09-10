@@ -64,4 +64,12 @@ public interface RetrofitServiceHouseOwner {
             @Part("user_id") RequestBody description,
             @Part MultipartBody.Part file
     );
+
+    @Multipart
+    @POST("client/upload/house/image")
+    Call<ResponseBody> upload(
+            @Part("user_id") RequestBody description,
+            @Part MultipartBody.Part file,
+            @Part("type") RequestBody type
+    );
 }

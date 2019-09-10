@@ -305,6 +305,32 @@
                 </TableRow>
 
 
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="2dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:textSize="16dp"
+                        android:text="Description: " />
+
+
+                    <TextView
+                        android:id="@+id/portal_house_owner_house_description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:scrollHorizontally="false"
+                        android:layout_column="2"
+                        android:lines="2"
+                        android:textSize="16dp"
+                        android:maxLines="5" />
+                </TableRow>
+
+
             </TableLayout>
 
             <Button

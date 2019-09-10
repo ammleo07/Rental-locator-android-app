@@ -54,7 +54,7 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
     public void populateData()
     {
         EditText houseName = (EditText) findViewById(R.id.edit_house_owner_house_name);
-        //EditText houseType = (EditText) findViewById(R.id.edit_house_owner_house_type);
+        EditText description = (EditText) findViewById(R.id.edit_house_owner_house_description);
         EditText monthlyFee = (EditText) findViewById(R.id.edit_house_owner_month_fees);
         EditText numberOfSlots = (EditText) findViewById(R.id.edit_house_owner_number_of_slots);
         EditText houseId = (EditText) findViewById(R.id.edit_house_owner_house_id);
@@ -71,6 +71,7 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
         getHouseTypes();
         monthlyFee.setText(ownerForm.getHouse().getMonthlyFee() + "");
         numberOfSlots.setText(ownerForm.getHouse().getNumberOfSlots() + "");
+        description.setText(ownerForm.getHouse().getDescription());
         boarderType.setSelection(spinnerArrayAdapterboarderType_list.getPosition(ownerForm.getHouse().getBoarderType()));
         if(ownerForm.getHouse().getIsNegotiable().equalsIgnoreCase("Y"))
             isNegotiable.setChecked(true);
@@ -104,6 +105,7 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
         EditText houseId = (EditText) findViewById(R.id.edit_house_owner_house_id);
         final Spinner boarderType = (Spinner) findViewById(R.id.edit_house_owner_boarder_type);
         CheckBox isNegotiable = (CheckBox) findViewById(R.id.edit_house_owner_is_negotiable);
+        EditText description = (EditText) findViewById(R.id.edit_house_owner_house_description);
 
 
         House house = new House();
@@ -115,6 +117,7 @@ public class EditHouseDetailsActivity extends AppCompatActivity {
         house.setMonthlyFee(Double.parseDouble(monthlyFee.getText().toString()));
         house.setBoarderType(boarderType.getSelectedItem().toString());
         house.setIsNegotiable(isNegotiable.isChecked() ? "Y" : "N");
+        house.setDescription(description.getText().toString());
         HouseOwnerForm form = new HouseOwnerForm();
         form.setHouse(house);
         save(form);

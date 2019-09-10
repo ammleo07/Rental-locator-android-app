@@ -15,6 +15,24 @@ public class Rentee implements Serializable {
     String houseType;
     double minPriceRange;
     double maxPriceRange;
+    String renteeType;
+    String fundType;
+
+    public String getRenteeType() {
+        return renteeType;
+    }
+
+    public void setRenteeType(String renteeType) {
+        this.renteeType = renteeType;
+    }
+
+    public String getFundType() {
+        return fundType;
+    }
+
+    public void setFundType(String fundType) {
+        this.fundType = fundType;
+    }
 
     public int getUserId() {
         return userId;

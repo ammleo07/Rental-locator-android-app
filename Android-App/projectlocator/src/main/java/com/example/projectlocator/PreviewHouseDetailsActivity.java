@@ -187,6 +187,7 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
         TextView town = (TextView) findViewById(R.id.preview_address_town);
         TextView latitude = (TextView) findViewById(R.id.preview_address_latitude);
         TextView longitude = (TextView) findViewById(R.id.preview_address_longitude);
+        TextView description = (TextView) findViewById(R.id.preview_house_house_description);
 
 
 
@@ -206,7 +207,7 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
         town.setText(form.getAddress().getTown());
         latitude.setText(form.getAddress().getLatitude() + "");
         longitude.setText(form.getAddress().getLongitude() + "");
-
+        description.setText(form.getHouse().getDescription());
 
     }
 
@@ -222,10 +223,12 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
 
                 if(response.isSuccessful()) {
-                    if(response.body().equalsIgnoreCase("success"))
+                    if(!response.body().equalsIgnoreCase("failed"))
                     {
                         Toast.makeText(getApplicationContext(), "User has been saved" , Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(),SuccessRegistrationActivity.class);
+                        //Intent intent = new Intent(getApplicationContext(),SuccessRegistrationActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),UploadDocumentsHouseOwner.class);
+                        intent.putExtra("id",response.body());
                         startActivity(intent);
                     }
                     else

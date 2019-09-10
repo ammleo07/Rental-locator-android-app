@@ -167,13 +167,16 @@ public class PreviewRenteeDetailsActivity extends AppCompatActivity {
         TextView contactNumber = (TextView) findViewById(R.id.preview_rentee_contact_number);
         TextView houseType = (TextView) findViewById(R.id.preview_rentee_house_type);
         TextView priceRange = (TextView) findViewById(R.id.preview_rentee_price_range);
+        TextView renteeType = (TextView) findViewById(R.id.preview_rentee_type);
+        TextView fundType = (TextView) findViewById(R.id.preview_rentee_fund_type);
         username.setText(form.getUser().getUsername());
         password.setText(form.getUser().getPassword());
         name.setText(form.getUser().getFirstName() + " " + form.getUser().getMiddleName() + " " + form.getUser().getLastName());
         contactNumber.setText(": " +form.getRentee().getContactNumber());
         houseType.setText(form.getRentee().getHouseType());
         priceRange.setText(": Php. " + form.getRentee().getMinPriceRange()  + " to Php. " + form.getRentee().getMaxPriceRange());
-
+        renteeType.setText(form.getRentee().getRenteeType());
+        fundType.setText(form.getRentee().getFundType());
     }
 
     public boolean saveUser(final RenteeForm rentee) {
@@ -189,10 +192,12 @@ public class PreviewRenteeDetailsActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()) {
                     //showProgress(false);
-                    if(response.body().equalsIgnoreCase("success"))
+                    if(!response.body().equalsIgnoreCase("failed"))
                     {
                         Toast.makeText(getApplicationContext(), "User has been saved" , Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(),SuccessRegistrationActivity.class);
+                        //Intent intent = new Intent(getApplicationContext(),SuccessRegistrationActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),UploadDocumentRentee.class);
+                        intent.putExtra("id", response.body());
                         startActivity(intent);
                     }
                     else

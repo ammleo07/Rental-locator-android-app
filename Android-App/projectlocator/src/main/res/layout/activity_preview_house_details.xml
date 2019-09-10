@@ -214,7 +214,7 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="230dp"
+        android:layout_height="250dp"
         android:layout_marginTop="170dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -307,6 +307,31 @@
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:textSize="16dp"
+                android:text="Description"
+                />
+
+
+            <TextView
+                android:id="@+id/preview_house_house_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:layout_column="2"
+                />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="2dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="16dp"
                 android:text="House Type"
              />
 
@@ -318,6 +343,7 @@
                 android:layout_column="2"
                 />
         </TableRow>
+
 
         <TableRow
             android:layout_width="fill_parent"
@@ -409,7 +435,7 @@
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="220dp"
-        android:layout_marginTop="273dp"
+        android:layout_marginTop="313dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:stretchColumns="2">

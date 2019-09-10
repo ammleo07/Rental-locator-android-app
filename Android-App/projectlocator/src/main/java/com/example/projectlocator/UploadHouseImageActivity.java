@@ -82,7 +82,6 @@ public class UploadHouseImageActivity extends AppCompatActivity {
 
         }
 
-
     }
 
     public void upload(View view)
@@ -108,13 +107,15 @@ public class UploadHouseImageActivity extends AppCompatActivity {
                 MultipartBody.Part.createFormData("file", file.getName(), requestFile);
         RequestBody userId =
                 RequestBody.create(MediaType.parse("multipart/form-data"), ownerForm.getHouse().getId() + "");
+        RequestBody fileType =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file.getName() + "");
         RetrofitServiceHouseOwner mService;
         SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
         ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
         mService= ApiUtils.getHomeOwnerService();
 
 
-        Call<ResponseBody> call = mService.upload(userId,body);
+        Call<ResponseBody> call = mService.upload(userId,body,fileType);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call,

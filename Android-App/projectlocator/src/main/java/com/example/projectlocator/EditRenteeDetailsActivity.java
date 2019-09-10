@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.util.Arrays;
 import java.util.List;
 
 import Model.Rentee;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 public class EditRenteeDetailsActivity extends AppCompatActivity {
 
     RenteeForm renteeForm;
-    Spinner houseType;
+    Spinner houseType, renteeType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +55,19 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
 
     public void populateData()
     {
+        String[] type = {"Select Type", "Student", "Worker", "Businessman"};
+        final ArrayAdapter<String> spinnerArrayAdapterType = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item, Arrays.asList(type));
+        spinnerArrayAdapterType.setDropDownViewResource(R.layout.spinner_item);
+        renteeType = (Spinner) findViewById(R.id.edit_rentee_type);
+        renteeType.setAdapter(spinnerArrayAdapterType);
+
         EditText username = (EditText) findViewById(R.id.edit_rentee_username);
         EditText password = (EditText) findViewById(R.id.edit_rentee_password);
         EditText firstName = (EditText) findViewById(R.id.edit_rentee_first_name);
         EditText middleName = (EditText) findViewById(R.id.edit_rentee_middle_name);
         EditText lastName = (EditText) findViewById(R.id.edit_rentee_last_name);
         EditText contactNumber = (EditText) findViewById(R.id.edit_rentee_contact_number);
+        EditText fundType = (EditText) findViewById(R.id.edit_rentee_fund_type);
         //EditText houseType = (EditText) findViewById(R.id.edit_rentee_house_type);
         getHouseTypes();
         EditText minPrice = (EditText) findViewById(R.id.edit_rentee_min_price);
@@ -77,6 +85,10 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         maxPrice.setText(renteeForm.getRentee().getMaxPriceRange() + "");
         userId.setText(renteeForm.getUser().getId() + "");
         renteeId.setText(renteeForm.getRentee().getId() + "");
+        renteeType.setSelection(spinnerArrayAdapterType.getPosition(renteeForm.getRentee().getRenteeType()));
+        fundType.setText(renteeForm.getRentee().getFundType());
+
+
 
     }
 

@@ -88,6 +88,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
                         TextView numberOfSlots = (TextView) findViewById(R.id.portal_house_owner_house_number_slots);
                         TextView address = (TextView) findViewById(R.id.portal_house_owner_house_address);
                         TextView houseName = (TextView) findViewById(R.id.portal_house_owner_house_name);
+                        TextView description = (TextView) findViewById(R.id.portal_house_owner_house_description);
                         username.setText(response.body().getUser().getUsername());
                         fullName.setText(response.body().getUser().getFirstName() + " " + response.body().getUser().getMiddleName() + " " + response.body().getUser().getLastName());
                         houseType.setText(response.body().getHouse().getHouseType());
@@ -100,6 +101,7 @@ public class HouseOwnerPortalActivity extends AppCompatActivity
                         TextView ownerUsername = (TextView) findViewById(R.id.owner_username);
                         ownerName.setText(fullName.getText().toString());
                         ownerUsername.setText(username.getText().toString());
+                        description.setText(response.body().getHouse().getDescription());
                         ownerForm = response.body();
                     }
                     else

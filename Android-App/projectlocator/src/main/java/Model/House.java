@@ -11,6 +11,16 @@ public class House implements Serializable{
     String houseName;
     String houseType;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    String description;
+
     public String getBoarderType() {
         return boarderType;
     }

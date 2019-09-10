@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.projectlocator.UploadDocumentsHouseOwner"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <ImageView
+        android:id="@+id/register_house_owner_upload_valid_id"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="165dp"
+        android:clickable="true"
+        android:onClick="uploadValidIdDocument"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_house_owner_upload_land_title"
+        app:srcCompat="@drawable/border" />
+
+    <ImageView
+        android:id="@+id/register_house_owner_upload_land_title"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="29dp"
+        android:clickable="true"
+        android:onClick="uploadLandTitle"
+        app:layout_constraintBottom_toTopOf="@+id/register_house_owner_upload_valid_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/border" />
+
+    <ImageView
+        android:id="@+id/register_house_owner_upload_business_permit"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="7dp"
+        android:clickable="true"
+        android:onClick="uploadBusinessPermit"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/border" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="122dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="352dp"
+        android:layout_marginTop="16dp"
+        android:text="Selfie with valid ID"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="140dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="1dp"
+        android:text="Selfie with land title"
+        app:layout_constraintBottom_toTopOf="@+id/register_house_owner_upload_land_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_house_owner_upload_business_permit" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="118dp"
+        android:layout_height="25dp"
+        android:text="Selfie with business permit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="131dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="89dp"
+        android:text="Upload"
+        android:onClick="uploadImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+</android.support.constraint.ConstraintLayout>

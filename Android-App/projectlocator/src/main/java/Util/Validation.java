@@ -14,7 +14,7 @@ public class Validation {
 
         for(String item:list)
         {
-            if(item.equalsIgnoreCase(""))
+            if(item.equalsIgnoreCase("") || item.equalsIgnoreCase("0"))
             {
                 result = false;
                 break;

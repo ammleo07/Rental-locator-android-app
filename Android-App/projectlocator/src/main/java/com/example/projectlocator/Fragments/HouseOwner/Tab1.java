@@ -1,20 +1,33 @@
 package com.example.projectlocator.Fragments.HouseOwner;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.projectlocator.R;
 
+import Model.Comment;
 import Util.PasswordValidator;
 import Util.Retrofit.ApiUtils;
 import Util.Retrofit.RetrofitService;
@@ -23,6 +36,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_OK;
+import static android.icu.text.UnicodeSet.CASE;
+
 /**
  * Created by alber on 14/04/2019.
  */
@@ -30,6 +46,7 @@ import retrofit2.Response;
 public class Tab1 extends Fragment {
 
     EditText username,password;
+
 
     @Nullable
     @Override
@@ -64,6 +81,7 @@ public class Tab1 extends Fragment {
                 }
             }
         });
+
 
         return rootView;
     }
@@ -111,4 +129,6 @@ public class Tab1 extends Fragment {
 
         return result;
     }
+
+
 }

@@ -100,6 +100,8 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 Spinner houseType = (Spinner) findViewById(R.id.houseType_list);
                 EditText minPrice = (EditText) findViewById(R.id.register_rentee_min_price);
                 EditText maxPrice = (EditText) findViewById(R.id.register_rentee_max_price);
+                EditText fundType = (EditText) findViewById(R.id.register_rentee_fund_type);
+                Spinner renteeType = (Spinner) findViewById(R.id.rentee_type);
 
                 User user = new User();
                 user.setUsername(username.getText().toString());
@@ -120,20 +122,30 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 rentee.setHouseType(houseType.getSelectedItem().toString());
                 rentee.setMinPriceRange(Double.parseDouble(minPrice.getText().toString()));
                 rentee.setMaxPriceRange(Double.parseDouble(maxPrice.getText().toString()));
+                rentee.setFundType(fundType.getText().toString());
+                rentee.setRenteeType(renteeType.getSelectedItem().toString());
 
                 requiredFields.add(rentee.getHouseType());
                 requiredFields.add(rentee.getContactNumber());
                 requiredFields.add(rentee.getMaxPriceRange() + "");
                 requiredFields.add(rentee.getMinPriceRange() + "");
+                requiredFields.add(rentee.getFundType());
+                requiredFields.add(rentee.getRenteeType());
 
                 Validation validation = new Validation();
                 if(validation.isRequiredFieldsCompleted(requiredFields)) {
                     RenteeForm form = new RenteeForm();
                     form.setRentee(rentee);
                     form.setUser(user);
-                    Intent intent = new Intent(RegistrationRenteeActivity.this, PreviewRenteeDetailsActivity.class);
-                    intent.putExtra("User", form);
-                    startActivity(intent);
+                    if(form.getRentee().getMaxPriceRange() > 0 && form.getRentee().getMinPriceRange() > 0) {
+                        Intent intent = new Intent(RegistrationRenteeActivity.this, PreviewRenteeDetailsActivity.class);
+                        intent.putExtra("User", form);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Rental fee ranges must not be 0" , Toast.LENGTH_LONG).show();
+                    }
                     //saveUser(form);
                 }
                 else
