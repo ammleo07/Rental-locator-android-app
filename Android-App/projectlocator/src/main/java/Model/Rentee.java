@@ -18,6 +18,16 @@ public class Rentee implements Serializable {
     String renteeType;
     String fundType;
 
+    public double getOldTransportation() {
+        return oldTransportation;
+    }
+
+    public void setOldTransportation(double oldTransportation) {
+        this.oldTransportation = oldTransportation;
+    }
+
+    double oldTransportation;
+
     public String getRenteeType() {
         return renteeType;
     }

@@ -198,6 +198,25 @@
             </android.support.design.widget.TextInputLayout>
 
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/register_rentee_old_trasnportation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Old Transportation"
+                    android:imeActionId="17"
+                    android:imeActionLabel="Old Transportation"
+                    android:imeOptions="actionUnspecified"
+                    android:maxLines="2"
+                    android:inputType="numberSigned"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -42,20 +42,22 @@ public class RecyclerViewAdapterHouseGallery extends RecyclerView.Adapter<Recycl
         final SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
         //Picasso.with(context).load("http://192.168.1.11:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
         Log.i("Server Path:","http://" + sharedpreferences.getString("SERVER",null));
-        Picasso.with(context).load("http://" + sharedpreferences.getString("SERVER",null) + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
-                             .resize(400,300)
-                             .centerCrop()
-                             .into(holder.houseImage, new Callback() {
-                                 @Override
-                                 public void onSuccess() {
-                                     holder.progressBar.setVisibility(View.GONE);
-                                 }
+        if(!itemList.get(position).contains(".pdf")) {
+            Picasso.with(context).load("http://" + sharedpreferences.getString("SERVER", null) + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .resize(400, 250)
+                    .centerCrop()
+                    .into(holder.houseImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
 
-                                 @Override
-                                 public void onError() {
-                                     Log.i("Error on picasso:","http://" + sharedpreferences.getString("SERVER",null));
-                                 }
-                             });
+                        @Override
+                        public void onError() {
+                            Log.i("Error on picasso:", "http://" + sharedpreferences.getString("SERVER", null));
+                        }
+                    });
+        }
         //Picasso.with(context).load("http://192.168.0.137:8080" + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.houseImage);
 //        Picasso.with(context).load("http://balangay.site:8080/usr/local/images"  + itemList.get(position)).memoryPolicy(MemoryPolicy.NO_CACHE)
 //                .resize(450,600)

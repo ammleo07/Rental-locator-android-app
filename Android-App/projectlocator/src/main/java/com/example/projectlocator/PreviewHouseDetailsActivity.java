@@ -1,8 +1,10 @@
 package com.example.projectlocator;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
@@ -10,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -140,6 +143,33 @@ public class PreviewHouseDetailsActivity extends AppCompatActivity {
     {
         finish();
     }
+
+    public void acceptTerms(final View view){
+        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(PreviewHouseDetailsActivity.this);
+        View mView = layoutInflaterAndroid.inflate(R.layout.terms_and_condition_dialog, null);
+        AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(PreviewHouseDetailsActivity.this);
+        alertDialogBuilderUserInput.setView(mView);
+
+        alertDialogBuilderUserInput
+                .setCancelable(false)
+                .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogBox, int id) {
+                     save(view);
+                    }
+                })
+
+                .setNegativeButton("Decline",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogBox, int id) {
+                                dialogBox.cancel();
+                            }
+                        });
+
+        AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
+        alertDialogAndroid.show();
+        alertDialogAndroid.getWindow().setLayout(600, 800);
+    }
+
 
     public void save(View view)
     {

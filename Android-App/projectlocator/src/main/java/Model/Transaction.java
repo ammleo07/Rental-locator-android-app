@@ -116,5 +116,17 @@ public class Transaction extends RealmObject implements Serializable {
     @Expose
     String dateSold;
 
+    public String getSourceOfIncome() {
+        return sourceOfIncome;
+    }
+
+    public void setSourceOfIncome(String sourceOfIncome) {
+        this.sourceOfIncome = sourceOfIncome;
+    }
+
+    @SerializedName("sourceOfIncome")
+    @Expose
+    String sourceOfIncome;
+
 
 }

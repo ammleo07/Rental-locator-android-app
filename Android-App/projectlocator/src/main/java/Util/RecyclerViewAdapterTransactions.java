@@ -41,7 +41,8 @@ public class RecyclerViewAdapterTransactions extends RecyclerView.Adapter<Recycl
         holder.transactionId.setText(itemList.get(position).getId() + "");
         holder.ownerTokenId.setText(itemList.get(position).getOwnerTokenId());
         holder.renteeTokenId.setText(itemList.get(position).getRenteeTokenId());
-        holder.transactionRenteeContactNumber.setText(itemList.get(position).getRenteeContactNumber());
+        holder.transactionRenteeContactNumber.setText("Rentee's Contact Number:" +itemList.get(position).getRenteeContactNumber());
+        holder.transactionRenteeSourceOfIncome.setText("Source of Income:" +itemList.get(position).getSourceOfIncome());
 
         SharedPreferences sharedpreferences =context.getSharedPreferences("user", Context.MODE_PRIVATE);
         if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee")) {
@@ -49,19 +50,27 @@ public class RecyclerViewAdapterTransactions extends RecyclerView.Adapter<Recycl
             if((!itemList.get(position).getStatus().equalsIgnoreCase("Accepted")) || (itemList.get(position).getStatus().equalsIgnoreCase("Sold")))
             {
                 holder.transactionacceptButton.setEnabled(false);
+                holder.transactiondeclineButton.setEnabled(false);
             }
         }
         else {
             holder.transactionacceptButton.setText("Accept");
 
-            if(itemList.get(position).getStatus().equalsIgnoreCase("Accepted"))
+            if(itemList.get(position).getStatus().equalsIgnoreCase("Accepted") || itemList.get(position).getStatus().equalsIgnoreCase("Declined"))
             {
                 holder.transactionacceptButton.setEnabled(false);
+                holder.transactiondeclineButton.setEnabled(false);
             }
         }
 
-        if(itemList.get(position).getStatus().matches("Confirmed|Rejected|Sold"))
+        if(itemList.get(position).getStatus().matches("Confirmed|Rejected|Sold|Declined")) {
             holder.transactionacceptButton.setEnabled(false);
+            holder.transactiondeclineButton.setEnabled(false);
+        }
+
+        if(itemList.get(position).getStatus().matches("Accepted")) {
+            holder.transactiondeclineButton.setEnabled(false);
+        }
     }
 
     @Override

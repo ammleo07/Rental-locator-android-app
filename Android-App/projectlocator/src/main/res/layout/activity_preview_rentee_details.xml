@@ -355,7 +355,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="#FFFFFF"
-                android:onClick="save"
+                android:onClick="acceptTerms"
                 android:text="Save" />
             <Button
                 android:id="@+id/go_back_rentee_details"

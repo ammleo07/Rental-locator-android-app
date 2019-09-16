@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 import Model.HouseOwnerForm;
 import Util.Retrofit.ApiUtils;
@@ -91,6 +92,7 @@ public class UploadHouseImageActivity extends AppCompatActivity {
 
     public void uploadImage(String filepath)
     {
+        String transactionID = new SimpleDateFormat("MMddyyHHmmSSss").format(new java.util.Date());
         progressBar = findViewById(R.id.upload_progress);
         progressBar.setVisibility(View.VISIBLE);
         Toast.makeText(getApplicationContext(), "Uploading .....", Toast.LENGTH_LONG).show();
@@ -108,7 +110,7 @@ public class UploadHouseImageActivity extends AppCompatActivity {
         RequestBody userId =
                 RequestBody.create(MediaType.parse("multipart/form-data"), ownerForm.getHouse().getId() + "");
         RequestBody fileType =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file.getName() + "");
+                RequestBody.create(MediaType.parse("multipart/form-data"), transactionID + "");
         RetrofitServiceHouseOwner mService;
         SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
         ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);

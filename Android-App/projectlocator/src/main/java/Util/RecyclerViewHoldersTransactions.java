@@ -33,8 +33,8 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
         implements View.OnClickListener{
 
     public TextView transactionName,transactionOwnerName,transactionRenteeName,transactionRenteeContactNumber;
-    public TextView transactionStatus,transactionId, ownerTokenId, renteeTokenId;
-    public Button transactionacceptButton;
+    public TextView transactionStatus,transactionId, ownerTokenId, renteeTokenId, transactionRenteeSourceOfIncome;
+    public Button transactionacceptButton, transactiondeclineButton;
 
 
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
@@ -48,9 +48,11 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
         transactionStatus = itemView.findViewById(R.id.transaction_status);
         transactionId = itemView.findViewById(R.id.transaction_id);
         transactionacceptButton=itemView.findViewById(R.id.accept_btn);
+        transactiondeclineButton=itemView.findViewById(R.id.decline_btn);
         ownerTokenId=itemView.findViewById(R.id.transaction_owner_token_id);
         renteeTokenId=itemView.findViewById(R.id.transaction_rentee_token_id);
         transactionRenteeContactNumber=itemView.findViewById(R.id.transaction_rentee_contact_number);
+        transactionRenteeSourceOfIncome=itemView.findViewById(R.id.transaction_rentee_source_of_income);
 
         transactionacceptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,9 +69,29 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
                 {
                     sendAcceptToRentee(v);
                     transactionacceptButton.setEnabled(false);
+                    transactiondeclineButton.setEnabled(false);
                 }
             }
         });
+
+        transactiondeclineButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                SharedPreferences sharedpreferences =v.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+                if(sharedpreferences.getString("userType",null).equalsIgnoreCase("rentee")) {
+
+
+                }
+                else
+                {
+                    sendDeclineToRentee(v);
+                    transactionacceptButton.setEnabled(false);
+                    transactiondeclineButton.setEnabled(false);
+                }
+            }
+        });
+
 
 
 
@@ -87,7 +109,9 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
             transaction.setOwnerTokenId(ownerTokenId.getText().toString());
             transaction.setRentee(transactionRenteeName.getText().toString().split(":")[1].trim());
             transaction.setRenteeTokenId(renteeTokenId.getText().toString());
-            transaction.setRenteeContactNumber(transactionRenteeContactNumber.getText().toString());
+            transaction.setSourceOfIncome(transactionRenteeSourceOfIncome.getText().toString().split(":")[1].trim());
+            transaction.setRenteeContactNumber(transactionRenteeContactNumber.getText().toString().split(":")[1].trim());
+            transaction.setStatus("Accepted");
             transaction.setOrigin("house owner");
             Toast.makeText(v.getContext(), "data: " + transaction.getHouseOwner(), Toast.LENGTH_LONG).show();
             Toast.makeText(v.getContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
@@ -125,6 +149,60 @@ public class RecyclerViewHoldersTransactions extends RecyclerView.ViewHolder
         }
 
     }
+
+    public void sendDeclineToRentee(final View v)
+    {
+        try {
+
+            SharedPreferences sharedpreferences =v.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+            String username=sharedpreferences.getString("username",null);
+            Transaction transaction = new Transaction();
+            transaction.setId(Integer.parseInt(transactionId.getText().toString()));
+            transaction.setHouseOwner(transactionOwnerName.getText().toString().split(":")[1].trim());
+            transaction.setOwnerTokenId(ownerTokenId.getText().toString());
+            transaction.setRentee(transactionRenteeName.getText().toString().split(":")[1].trim());
+            transaction.setRenteeTokenId(renteeTokenId.getText().toString());
+            transaction.setRenteeContactNumber(transactionRenteeContactNumber.getText().toString().split(":")[1].trim());
+            transaction.setSourceOfIncome(transactionRenteeSourceOfIncome.getText().toString().split(":")[1].trim());
+            transaction.setStatus("Declined");
+            transaction.setOrigin("house owner");
+            Toast.makeText(v.getContext(), "data: " + transaction.getHouseOwner(), Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), sharedpreferences.getString("username",null) +  " was sending Inquiry..", Toast.LENGTH_LONG).show();
+            //SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+            ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+            RetrofitServiceHouseOwner mService= ApiUtils.getHomeOwnerService();
+            mService.sendAccepted(transaction).enqueue(new Callback<Transaction>() {
+
+                @Override
+                public void onResponse(Call<Transaction> call, Response<Transaction> response) {
+
+                    if(response.isSuccessful() && response.body() != null)
+                    {
+                        Toast.makeText(v.getContext(), "Decline notification is now sent to rentee", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(v.getContext(), "There is error on sending notification", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<Transaction> call, Throwable t) {
+                    Toast.makeText(v.getContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(v.getContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
 
     public void setStatus(final View v,String status)
     {

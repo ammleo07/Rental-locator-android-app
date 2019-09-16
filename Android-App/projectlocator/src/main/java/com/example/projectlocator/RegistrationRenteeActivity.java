@@ -102,6 +102,7 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 EditText maxPrice = (EditText) findViewById(R.id.register_rentee_max_price);
                 EditText fundType = (EditText) findViewById(R.id.register_rentee_fund_type);
                 Spinner renteeType = (Spinner) findViewById(R.id.rentee_type);
+                EditText oldTransportation = (EditText) findViewById(R.id.register_rentee_old_trasnportation);
 
                 User user = new User();
                 user.setUsername(username.getText().toString());
@@ -124,6 +125,7 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                 rentee.setMaxPriceRange(Double.parseDouble(maxPrice.getText().toString()));
                 rentee.setFundType(fundType.getText().toString());
                 rentee.setRenteeType(renteeType.getSelectedItem().toString());
+                rentee.setOldTransportation(oldTransportation.getText().toString().equalsIgnoreCase("") ? 0.0: Double.parseDouble(oldTransportation.getText().toString()));
 
                 requiredFields.add(rentee.getHouseType());
                 requiredFields.add(rentee.getContactNumber());
@@ -137,14 +139,14 @@ public class RegistrationRenteeActivity extends AppCompatActivity {
                     RenteeForm form = new RenteeForm();
                     form.setRentee(rentee);
                     form.setUser(user);
-                    if(form.getRentee().getMaxPriceRange() > 0 && form.getRentee().getMinPriceRange() > 0) {
+                    if(form.getRentee().getMaxPriceRange() > 0 && form.getRentee().getMinPriceRange() > 0 && form.getRentee().getOldTransportation() > 0) {
                         Intent intent = new Intent(RegistrationRenteeActivity.this, PreviewRenteeDetailsActivity.class);
                         intent.putExtra("User", form);
                         startActivity(intent);
                     }
                     else
                     {
-                        Toast.makeText(getApplicationContext(), "Rental fee ranges must not be 0" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Rental fee ranges and old transportation fee must not be 0" , Toast.LENGTH_LONG).show();
                     }
                     //saveUser(form);
                 }

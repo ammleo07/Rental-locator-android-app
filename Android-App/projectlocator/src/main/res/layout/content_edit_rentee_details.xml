@@ -244,6 +244,24 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_rentee_old_transportation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Old Transporation"
+                android:imeActionId="5"
+                android:imeActionLabel="Old Transporation"
+                android:imeOptions="actionUnspecified"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
 
 
         <Button

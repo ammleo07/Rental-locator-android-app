@@ -44,6 +44,7 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     HouseOwnerForm ownerForm;
+    Double oldTransportation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
 
         mapFragment.getMapAsync(this);
         ownerForm = (HouseOwnerForm) (getIntent().getSerializableExtra("House"));
+        oldTransportation = getIntent().getDoubleExtra("Transporation", 0.0);
 
     }
 
@@ -179,8 +181,16 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
 //
 //        //mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
         int padding = 150; // offset from edges of the map in pixels
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.animateCamera(cu);
+        final CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+
+        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                mMap.animateCamera(cu);
+                //map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 30));
+            }
+        });
+        //mMap.animateCamera(cu);
         //mMap.moveCamera(cu);
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -211,7 +221,7 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
         float results[] =new float[19];
         Location.distanceBetween(latitude,longitude,ownerForm.getAddress().getLatitude(),ownerForm.getAddress().getLongitude(),results);
         //Location.distanceBetween(latitude,longitude,14.5925,121.0282,results);
-        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\nEstimated taxi fare: PHP. " + computeFare((results[0] / 1000) + 2) , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Distance:" + ((results[0] / 1000) + 2) + "\nOld Transporation:" + oldTransportation  +"\nEstimated taxi fare w/o traffic: PHP. " + computeFare((results[0] / 1000) + 2) + "\nEstimated taxi fare for 1 hour waiting with traffic: PHP. " + (computeFare((results[0] / 1000) + 2) + 120) + "\nNew Transportation w/o Traffic Savings: PHP. " + computeTotal(computeFare((results[0] / 1000) + 2)) + "\nNew Transportation 1 Hour Waiting With Traffic Savings: PHP. " + computeTotal(computeFare((results[0] / 1000) + 2) + 120) , Toast.LENGTH_LONG).show();
 
     }
 
@@ -220,6 +230,12 @@ public class MapLocationActivity extends FragmentActivity implements OnMapReadyC
         double fare=40.00;
         fare = fare + (Math.floor(distance) * 13.5);
         return fare;
+    }
+
+    public double computeTotal(double computedFare)
+    {
+
+        return oldTransportation - computedFare;
     }
 
     public double CalculationByDistance(LatLng StartP, LatLng EndP) {

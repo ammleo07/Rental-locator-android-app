@@ -86,10 +86,21 @@
         android:layout_height="wrap_content"
         android:text="Address"
         android:textColor="#000"
-        android:visibility="gone"
         android:layout_below="@+id/transaction_status"
         android:layout_alignLeft="@+id/transaction_status"
         android:layout_alignStart="@+id/transaction_status"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/transaction_rentee_source_of_income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textColor="#000"
+        android:layout_below="@+id/transaction_rentee_contact_number"
+        android:layout_alignLeft="@+id/transaction_rentee_contact_number"
+        android:layout_alignStart="@+id/transaction_rentee_contact_number"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -111,8 +122,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/transaction_status"
+        android:layout_below="@+id/transaction_rentee_source_of_income"
         android:text="Accept" />
+
+    <Button
+        android:id="@+id/decline_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/transaction_rentee_source_of_income"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/accept_btn"
+        android:text="Decline" />
 
 
 </RelativeLayout>

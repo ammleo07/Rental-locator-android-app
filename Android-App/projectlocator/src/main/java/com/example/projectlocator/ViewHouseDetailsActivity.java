@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import Model.HouseOwnerForm;
+import Model.RenteeForm;
 import Model.Transaction;
 import Model.User;
 import Util.Retrofit.ApiUtils;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 
 public class ViewHouseDetailsActivity extends AppCompatActivity {
 
-    String numbertoContact;
+    String numbertoContact, oldTransportation;;
     HouseOwnerForm houseOwnerForm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,8 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
         numbertoContact = houseOwnerForm.getHouseOwner().getContactNumber();
         callButton.setText("Call " + houseOwnerForm.getHouseOwner().getContactNumber());
         isFlood.setText("Is Prone to Flood: " + (houseOwnerForm.getAddress().getIsFlood() == null ? "No" :houseOwnerForm.getAddress().getIsFlood()));
-        isCrime.setText("Is Prone to Crime: " + (houseOwnerForm.getAddress().getIsCrime() == null ? "No" : houseOwnerForm.getAddress().getIsCrime()));
+        //isCrime.setText("Is Prone to Crime: " + (houseOwnerForm.getAddress().getIsCrime() == null ? "No" : houseOwnerForm.getAddress().getIsCrime()));
+        isCrime.setText("Brief Description: " + houseOwnerForm.getHouse().getDescription());
         addressId.setText(houseOwnerForm.getAddress().getId() + "");
 
         //Toast.makeText(getApplicationContext(), "Token:" + FirebaseInstanceId.getInstance().getToken() , Toast.LENGTH_LONG).show();
@@ -141,10 +143,7 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
     public void viewDirection(View v)
     {
         try {
-
-            Intent intent = new Intent(ViewHouseDetailsActivity.this,MapLocationActivity.class);
-            intent.putExtra("House", houseOwnerForm);
-            startActivity(intent);
+            getUserProfile();
 
         }
         catch (Exception ex)
@@ -187,6 +186,44 @@ public class ViewHouseDetailsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error:" + ex.getMessage() , Toast.LENGTH_LONG).show();
 
         }
+
+    }
+
+    public void getUserProfile()
+    {
+        RetrofitService mService;
+        SharedPreferences sharedpreferences =getSharedPreferences("user", Context.MODE_PRIVATE);
+        ApiUtils.BASE_URL="http://" + sharedpreferences.getString("SERVER",null);
+        mService= ApiUtils.getSOService();
+        mService.getProfile(sharedpreferences.getString("username",null)).enqueue(new Callback<RenteeForm>() {
+
+            @Override
+            public void onResponse(Call<RenteeForm> call, Response<RenteeForm> response) {
+
+                if(response.isSuccessful()) {
+                    if(response.body() != null)
+                    {
+                        Intent intent = new Intent(ViewHouseDetailsActivity.this,MapLocationActivity.class);
+                        intent.putExtra("House", houseOwnerForm);
+                        intent.putExtra("Transporation", response.body().getRentee().getOldTransportation());
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Error has been occured on the server" , Toast.LENGTH_LONG).show();
+
+                    }
+
+                }else {
+                    int statusCode  = response.code();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RenteeForm> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Unable to access the server:" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

@@ -68,6 +68,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         EditText lastName = (EditText) findViewById(R.id.edit_rentee_last_name);
         EditText contactNumber = (EditText) findViewById(R.id.edit_rentee_contact_number);
         EditText fundType = (EditText) findViewById(R.id.edit_rentee_fund_type);
+        EditText transpo = (EditText) findViewById(R.id.edit_rentee_old_transportation);
         //EditText houseType = (EditText) findViewById(R.id.edit_rentee_house_type);
         getHouseTypes();
         EditText minPrice = (EditText) findViewById(R.id.edit_rentee_min_price);
@@ -87,6 +88,7 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         renteeId.setText(renteeForm.getRentee().getId() + "");
         renteeType.setSelection(spinnerArrayAdapterType.getPosition(renteeForm.getRentee().getRenteeType()));
         fundType.setText(renteeForm.getRentee().getFundType());
+        transpo.setText(renteeForm.getRentee().getOldTransportation() + "");
 
 
 
@@ -105,6 +107,8 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         EditText maxPrice = (EditText) findViewById(R.id.edit_rentee_max_price);
         EditText userId = (EditText) findViewById(R.id.edit_rentee_user_id);
         EditText renteeId = (EditText) findViewById(R.id.edit_rentee_rentee_id);
+        EditText fundType = (EditText) findViewById(R.id.edit_rentee_fund_type);
+        EditText transpo = (EditText) findViewById(R.id.edit_rentee_old_transportation);
 
         User user = new User();
         user.setUsername(username.getText().toString());
@@ -124,7 +128,9 @@ public class EditRenteeDetailsActivity extends AppCompatActivity {
         rentee.setContactNumber(contactNumber.getText().toString());
         rentee.setMinPriceRange(Double.parseDouble(minPrice.getText().toString()));
         rentee.setMaxPriceRange(Double.parseDouble(maxPrice.getText().toString()));
-
+        rentee.setRenteeType(renteeType.getSelectedItem().toString());
+        rentee.setFundType(fundType.getText().toString());
+        rentee.setOldTransportation(Double.parseDouble(transpo.getText().toString()));
 
         RenteeForm renteeForm = new RenteeForm();
         renteeForm.setUser(user);
